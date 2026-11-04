@@ -346,6 +346,7 @@
   .acctbox .or{display:flex;align-items:center;gap:10px;color:var(--ink-dim);font-size:12px;margin:16px 0;} .acctbox .or::before,.acctbox .or::after{content:"";flex:1;height:1px;background:var(--line);}
   .acctbox input[type=email]{width:100%;margin-bottom:10px;} .acctbox .msg{min-height:18px;font-size:12.5px;margin-top:10px;color:var(--teal);} .acctbox .msg.err{color:#ff8a80;}
   .acctbox .x{position:absolute;top:12px;right:14px;background:none;border:0;color:var(--ink-dim);font-size:20px;cursor:pointer;}
+  .paybox{margin:4px 0 6px;} .paybox p{margin:0 0 10px;}
   .acctbox .row2{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;} .acctbox .danger{color:#ff8a80;border-color:#5a2f33;}
   /* ===== barra superior ordenada: los estados pasan a una franja sobre el visor ===== */
   #top{gap:12px;min-width:0;} #top button{white-space:nowrap;} #top>*{flex-shrink:0;}
@@ -3798,6 +3799,8 @@ $('autoL').onclick=()=>{
 // ================= CUENTAS (Supabase: Google + correo) =================
 const SB_CFG={ url:'https://fvnehoylbifarvwywims.supabase.co', key:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2bmVob3lsYmlmYXJ2d3l3aW1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM0Nzg3NzcsImV4cCI6MjEwOTA1NDc3N30.u1_e7EZ3sgPBU9eLlo63UPXbNxAm-pjPjo3j4t29488' };   // ← pegá la URL del proyecto y la clave "anon public" (Supabase → Project Settings → API). Nunca la "service_role".
 const GOOGLE_CLIENT_ID='187964166185-1gqg0shbhaqip0sovsbltg2kc0mlvour.apps.googleusercontent.com';   // público (no es el secreto)
+const PAYPAL_CLIENT_ID='';   // ← Client ID de tu app de PayPal (es público). Sandbox para probar; el Live recién cuando vayas a cobrar de verdad.
+const PRO_PRICE_TXT='US$ 15';
 const Acct={ sb:null, user:null, plan:'guest' };            // plan: guest (sin sesión) | free | pro
 const isPro=()=>Acct.plan==='pro';
 const acctOn=()=>!!(SB_CFG.url&&SB_CFG.key&&window.supabase&&location.protocol!=='file:');
@@ -3829,8 +3832,9 @@ function acctOpen(){
   if(u){
     am.innerHTML=`<div class="acctbox"><button class="x" aria-label="Cerrar">×</button><h2>Mi cuenta</h2><p>${esc(u.email||'')}</p>
       <p>Plan actual: <span class="badge-plan${isPro()?' pro':''}">${isPro()?'PRO':'FREE'}</span></p>
-      ${isPro()?'<p>Gracias por apoyar Lyric Studio.</p>':'<button class="btn-sm" disabled title="Próximamente con PayPal">Obtener Pro · próximamente</button>'}
+      ${isPro()?'<p>Gracias por apoyar Lyric Studio.</p>':'<div class="paybox"><p><b>Pro · '+PRO_PRICE_TXT+'</b> · pago único. Probá la versión Free antes de comprar.</p><div id="ppBtn"></div></div>'}
       <div class="row2"><button class="btn-sm" id="aOut">Cerrar sesión</button><button class="btn-sm danger" id="aDel">Borrar mi cuenta</button></div><div class="msg" id="acctMsg"></div></div>`;
+    if(!isPro()) acctPay();
     document.getElementById('aOut').onclick=async()=>{ await Acct.sb.auth.signOut(); am.hidden=true; };
     document.getElementById('aDel').onclick=async()=>{
       if(!confirm('Se borra tu cuenta y tu plan de forma permanente. Esto no se puede deshacer. ¿Seguir?')) return;
@@ -3867,6 +3871,33 @@ async function acctGoogle(){
       acctMsg('Entrando…'); const {error}=await Acct.sb.auth.signInWithIdToken({provider:'google',token:r.credential,nonce:raw}); if(error) acctMsg(error.message,true); } });
     google.accounts.id.renderButton(box,{ theme:'filled_black', size:'large', text:'continue_with', shape:'rectangular', width:340, locale:'es' });
   }catch(e){ fallback(); }
+}
+// Pago de Pro con PayPal: la página solo muestra el botón; el servidor crea el cobro, lo verifica y activa Pro
+let _pp=null;
+function loadPayPal(){
+  if(window.paypal&&paypal.Buttons) return Promise.resolve();
+  return _pp||(_pp=new Promise((ok,no)=>{ const sc=document.createElement('script');
+    sc.src='https://www.paypal.com/sdk/js?client-id='+encodeURIComponent(PAYPAL_CLIENT_ID)+'&currency=USD&intent=capture&components=buttons&disable-funding=credit,paylater';
+    sc.onload=ok; sc.onerror=()=>{ _pp=null; no(new Error('paypal')); }; document.head.appendChild(sc); setTimeout(()=>{ _pp=null; no(new Error('timeout')); },8000); }));
+}
+async function acctPay(){
+  const box=document.getElementById('ppBtn'); if(!box) return;
+  if(!PAYPAL_CLIENT_ID){ box.innerHTML='<p style="color:var(--ink-dim);font-size:12.5px;margin:0;">Los pagos todavía no están activados.</p>'; return; }
+  try{
+    await loadPayPal();
+    paypal.Buttons({
+      style:{layout:'vertical',color:'gold',shape:'rect',label:'pay',height:42},
+      createOrder:async()=>{ const {data,error}=await Acct.sb.functions.invoke('paypal-create-order'); if(error||!data||!data.id) throw new Error('crear'); return data.id; },
+      onApprove:async d=>{
+        acctMsg('Confirmando el pago…');
+        const {data,error}=await Acct.sb.functions.invoke('paypal-capture-order',{body:{orderID:d.orderID}});
+        if(error||!data||!data.ok){ acctMsg('Si te cobraron y no se activó Pro, escribinos con este número de orden: '+d.orderID,true); return; }
+        const {data:s}=await Acct.sb.auth.getSession(); await acctSet(s.session); toast('¡Listo! Ya sos Pro.');
+      },
+      onCancel:()=>acctMsg('Cancelaste el pago. No se cobró nada.'),
+      onError:()=>acctMsg('No se pudo completar el pago. Probá de nuevo.',true)
+    }).render('#ppBtn');
+  }catch(e){ box.innerHTML='<p style="color:#ff8a80;font-size:12.5px;margin:0;">No pudimos cargar PayPal. Revisá tu conexión o desactivá el bloqueador de anuncios.</p>'; }
 }
 ab.onclick=hab.onclick=acctOpen;
 acctInit();
