@@ -433,9 +433,11 @@
   .export-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
 
   .study-grid{height:100%;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-height:0}
-  .study-monitor{position:relative;min-width:0;min-height:0;overflow:hidden;background:#08070a;border:1px solid var(--line);border-radius:8px}
+  .study-monitor{position:relative;min-width:0;min-height:0;overflow:hidden;background:#17121d;border:1px solid var(--line);border-radius:8px}
   .study-monitor .monitor-label{position:absolute;z-index:4;left:10px;top:8px;padding:4px 8px;border-radius:5px;background:#120e17cc;color:var(--ink-dim);font:10px var(--mono);pointer-events:none}
   .study-monitor canvas{position:absolute;inset:0;margin:auto;max-width:100%;max-height:100%;object-fit:contain}
+  .study-monitor canvas.monitor-backdrop{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;filter:blur(22px) brightness(.48);transform:scale(1.08);opacity:.8;pointer-events:none}
+  .study-monitor canvas:not(.monitor-backdrop){z-index:1}
   #studyOutputMonitor{display:none} #center.study-on .study-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   #center.study-on #studyOutputMonitor{display:block}
   #center.study-on #studyEditorMonitor{outline:1px solid var(--gold)}
@@ -448,6 +450,9 @@
   .study-controls label{display:flex;align-items:center;gap:4px;color:var(--ink-dim);font:10px var(--mono)}
   .study-controls input{width:68px;min-width:0;padding:6px 5px;border:1px solid var(--line);border-radius:5px;background:var(--panel-2);color:var(--ink);font:11px var(--mono)}
   .study-controls input[readonly]{opacity:.65}
+  .ws-modal[hidden]{display:none!important}.ws-modal{position:fixed;inset:0;z-index:12000;background:#050408d9;display:grid;place-items:center;padding:20px}
+  .ws-box{width:min(560px,100%);padding:22px;border:1px solid var(--line);border-radius:15px;background:var(--panel);color:var(--ink);box-shadow:0 24px 80px #000a}
+  .ws-box h2{margin:0 0 8px}.ws-box p{color:var(--ink-dim);font-size:13px;line-height:1.5}.ws-screen-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.ws-screen-fields label{display:grid;gap:6px;color:var(--ink-dim);font-size:12px}.ws-screen-fields select{min-width:0;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--panel-2);color:var(--ink)}.ws-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:16px}#wsScreenStatus{font-size:12px;color:var(--gold);min-height:18px}
   @media(max-width:1099px){#center.study-on .study-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.study-controls input{width:58px}}
 
   #top .brand{position:relative}
@@ -624,6 +629,7 @@
   .tutorial-kf-track b{position:absolute;left:62%;top:3px;bottom:3px;width:2px;background:#f6efe3}
   .tutorial-wm-screen{position:relative;display:grid;place-items:center;aspect-ratio:16/8;border:1px solid #ffffff16;border-radius:8px;background:linear-gradient(145deg,#263a55,#7a5260 53%,#e2a55b);color:#fff;font:700 clamp(18px,4vw,30px) var(--display);text-shadow:0 3px 10px #0008}
   .tutorial-wm-mark{position:absolute;right:9px;bottom:8px;padding:4px 7px;border:1px solid #ffffff66;border-radius:5px;background:#100d17a8;color:#fff;font:600 9px var(--mono)}
+  .tutorial-workstation-demo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:12px 0;padding:12px;border:1px solid #ffffff18;border-radius:11px;background:#131018}.tutorial-workstation-demo>div{display:grid;gap:6px;min-height:70px;align-content:center;padding:10px;border:1px solid #ffffff16;border-radius:8px;background:linear-gradient(145deg,#292033,#18141d)}.tutorial-workstation-demo b{color:var(--gold);font:10px var(--mono)}.tutorial-workstation-demo span{color:#ddd3e3;font-size:11px}.tutorial-workstation-demo>i{color:var(--gold);font-size:19px;font-style:normal}
   .tutorial-info-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:10px}
   .tutorial-info-list span{padding:8px;border:1px solid #ffffff12;border-radius:8px;background:#ffffff06;color:#ddd3e3;font-size:10px}
   .tutorial-kicker{color:var(--gold);font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase}
@@ -966,7 +972,7 @@
     <label class="field wm-enable"><input id="wmModalEnabled" type="checkbox"> Activar marca de agua</label>
     <div class="wm-types"><button type="button" data-wm-type="text" class="active">Texto</button><button type="button" data-wm-type="image">Imagen</button><button type="button" data-wm-type="video">Video en bucle</button></div>
     <div id="wmTextFields"><label class="field">Texto</label><input id="wmModalText" type="text" value="LyricStudio.site" maxlength="120" placeholder="LyricStudio.site"></div>
-    <div id="wmAssetFields" hidden><input id="wmImageFile" type="file" accept="image/*" hidden><input id="wmVideoFile" type="file" accept="video/*" hidden><div class="wm-file-row"><button class="btn-sm" id="wmChooseAsset" type="button">Elegir archivo…</button><span id="wmAssetName">Sin archivo seleccionado</span><button class="btn-sm" id="wmRemoveAsset" type="button" hidden>Quitar</button></div><p class="hint" id="wmAssetHint">La imagen o el video se guardan para esta sesión.</p></div>
+    <div id="wmAssetFields" hidden><input id="wmImageFile" type="file" accept="image/*" hidden><input id="wmVideoFile" type="file" accept="video/*" hidden><div class="wm-file-row"><button class="btn-sm" id="wmChooseAsset" type="button">Elegir archivo…</button><span id="wmAssetName">Sin archivo seleccionado</span><button class="btn-sm" id="wmRemoveAsset" type="button" hidden>Quitar</button></div><p class="hint" id="wmAssetHint">Se incluye en el archivo del proyecto (.lyr).</p></div>
     <label class="field">Esquina</label><div class="seg wm-corners" id="wmModalCorners"><button type="button" data-c="tl">↖</button><button type="button" data-c="tr">↗</button><button type="button" data-c="bl">↙</button><button type="button" data-c="br" class="active">↘</button></div>
     <label class="field">Opacidad <span id="wmOpacityLabel">55%</span></label><input id="wmModalOpacity" type="range" min="5" max="100" value="55">
     <label class="field">Tamaño <span id="wmSizeLabel">12% del ancho</span></label><input id="wmModalSize" type="range" min="1" max="80" step="0.1" value="2.2">
@@ -2890,6 +2896,7 @@ let audioLoaded = false;
 let bgMode = 'color';
 let bgImageEl = null;
 let bgVideoEl = null;
+const projectFiles={audio:null,image:null,video:null,watermark:null};
 let customFontLoaded = null;
 let aspect = '9:16';
 let isPlaying = false;
@@ -3003,7 +3010,8 @@ wireDrop('dropLyrics','fileLyrics',(file, drop)=>{
 
 
 // ---------- audio ----------
-wireDrop('dropAudio','fileAudio',(file, drop)=>{
+function useAudioFile(file,drop=$('dropAudio')){
+  projectFiles.audio=file;
   const url = URL.createObjectURL(file);
   loadWave(file);
   audioEl.src = url;
@@ -3016,7 +3024,8 @@ wireDrop('dropAudio','fileAudio',(file, drop)=>{
   drop.textContent = file.name;
   drop.classList.add('has-file');
   document.getElementById('audioInfo').textContent = file.name;
-});
+}
+wireDrop('dropAudio','fileAudio',useAudioFile);
 
 // ---------- background mode ----------
 document.querySelectorAll('.bgmode button').forEach(btn=>{
@@ -3035,20 +3044,25 @@ document.querySelectorAll('.bgmode button').forEach(btn=>{
   });
 });
 
-wireDrop('dropImg','fileImg',(file, drop)=>{
+function useBackgroundImage(file,drop=$('dropImg')){
+  projectFiles.image=file;
   const img = new Image();
   img.onload = ()=>{ bgImageEl = img; redraw(); };
   img.src = URL.createObjectURL(file);
   drop.textContent = file.name; drop.classList.add('has-file');
-});
+}
+wireDrop('dropImg','fileImg',useBackgroundImage);
 
-wireDrop('dropVid','fileVid',(file, drop)=>{
+function useBackgroundVideo(file,drop=$('dropVid')){
+  projectFiles.video=file;
   const v = document.createElement('video');
-  v.src = URL.createObjectURL(file);
-  v.muted = true; v.loop = true; v.playsInline = true;
-  v.onloadeddata = ()=>{ bgVideoEl = v; redraw(); };
+  v.muted = true; v.loop = true; v.playsInline = true; v.preload='metadata';
+  const ready=new Promise(resolve=>{let done=false;const finish=ok=>{if(done)return;done=true;clearTimeout(timer);resolve(ok);};const timer=setTimeout(()=>finish(false),30000);v.onloadeddata=()=>{bgVideoEl=v;redraw();finish(true);};v.onerror=()=>finish(false);});
+  v.src = URL.createObjectURL(file);v.load();
   drop.textContent = file.name; drop.classList.add('has-file');
-});
+  return ready;
+}
+wireDrop('dropVid','fileVid',useBackgroundVideo);
 
 wireDrop('dropFont','fileFont',(file, drop)=>{
   if(!canUseFont('CustomUserFont')){ openFontPreview(); return; }
@@ -3139,8 +3153,9 @@ function currentLineIndex(t){
 }
 
 // ---------- drawing ----------
-let studyOutputCanvas=null,studyOutputCtx=null,studyMode=false;
-function drawFrame(t){ drawFrame0(t); syncStudyGuides(); if(studyOutputCanvas){ if(studyOutputCanvas.width!==canvas.width||studyOutputCanvas.height!==canvas.height){studyOutputCanvas.width=canvas.width;studyOutputCanvas.height=canvas.height;} studyOutputCtx.clearRect(0,0,canvas.width,canvas.height);studyOutputCtx.drawImage(canvas,0,0); } drawTimeline(t); updateBox(t); syncStudyControls(); }
+let studyOutputCanvas=null,studyOutputCtx=null,studyMode=false,stageBackdropCanvas=null,outputBackdropCanvas=null,workstationWindow=null,workstationScreenDetails=null;
+let workstationSettings={mainScreen:0,outputScreen:1};try{workstationSettings={...workstationSettings,...JSON.parse(localStorage.getItem('lyricStudio.workstation')||'{}')};}catch(e){}
+function drawFrame(t){ drawFrame0(t); syncStudyGuides(); if(stageBackdropCanvas){if(stageBackdropCanvas.width!==canvas.width||stageBackdropCanvas.height!==canvas.height){stageBackdropCanvas.width=canvas.width;stageBackdropCanvas.height=canvas.height;}stageBackdropCanvas.getContext('2d').drawImage(canvas,0,0);} if(studyOutputCanvas){ if(studyOutputCanvas.width!==canvas.width||studyOutputCanvas.height!==canvas.height){studyOutputCanvas.width=canvas.width;studyOutputCanvas.height=canvas.height;} studyOutputCtx.clearRect(0,0,canvas.width,canvas.height);studyOutputCtx.drawImage(canvas,0,0);if(outputBackdropCanvas){if(outputBackdropCanvas.width!==canvas.width||outputBackdropCanvas.height!==canvas.height){outputBackdropCanvas.width=canvas.width;outputBackdropCanvas.height=canvas.height;}outputBackdropCanvas.getContext('2d').drawImage(canvas,0,0);} } syncWorkstationPreview(t);drawTimeline(t); updateBox(t); syncStudyControls(); }
 function drawFrame0(t){
   const w = canvas.width, h = canvas.height;
   ctx.clearRect(0,0,w,h);
@@ -3492,10 +3507,10 @@ $('wmModalSize').addEventListener('input',()=>{wmSize=+$('wmModalSize').value;$(
 document.querySelectorAll('.wm-types button').forEach(b=>b.addEventListener('click',()=>setWmType(b.dataset.wmType)));
 $('wmModalCorners').addEventListener('click',e=>{const b=e.target.closest('button[data-c]');if(!b)return;wmCorner=b.dataset.c;document.querySelectorAll('#wmModalCorners button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('#wmCornerSeg button').forEach(x=>x.classList.toggle('active',x.dataset.c===wmCorner));redraw();});
 $('wmChooseAsset').addEventListener('click',()=>$(wmType==='video'?'wmVideoFile':'wmImageFile').click());
-function clearWmAsset(){if(wmAssetUrl)URL.revokeObjectURL(wmAssetUrl);wmAssetUrl='';wmAssetName='';wmImageEl=null;if(wmVideoEl){wmVideoEl.pause();wmVideoEl.removeAttribute('src');wmVideoEl.load();}wmVideoEl=null;$('wmAssetName').textContent='Sin archivo seleccionado';$('wmRemoveAsset').hidden=true;redraw();}
+function clearWmAsset(){if(wmAssetUrl)URL.revokeObjectURL(wmAssetUrl);wmAssetUrl='';wmAssetName='';wmImageEl=null;projectFiles.watermark=null;if(wmVideoEl){wmVideoEl.pause();wmVideoEl.removeAttribute('src');wmVideoEl.load();}wmVideoEl=null;$('wmAssetName').textContent='Sin archivo seleccionado';$('wmRemoveAsset').hidden=true;redraw();}
 $('wmRemoveAsset').addEventListener('click',clearWmAsset);
-$('wmImageFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;clearWmAsset();wmAssetUrl=URL.createObjectURL(f);const im=new Image();im.onload=()=>{wmImageEl=im;wmAssetName=f.name;$('wmAssetName').textContent=f.name;$('wmRemoveAsset').hidden=false;wmType='image';setWmType('image');};im.src=wmAssetUrl;e.target.value='';});
-$('wmVideoFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;clearWmAsset();wmAssetUrl=URL.createObjectURL(f);const v=document.createElement('video');v.src=wmAssetUrl;v.muted=true;v.loop=true;v.playsInline=true;v.onloadeddata=()=>{wmVideoEl=v;wmAssetName=f.name;$('wmAssetName').textContent=f.name;$('wmRemoveAsset').hidden=false;wmType='video';setWmType('video');v.play().catch(()=>{});const paint=()=>{if(wmVideoEl!==v)return;if(!isPlaying)drawFrame(getCurrentTime());if(v.requestVideoFrameCallback)v.requestVideoFrameCallback(paint);else setTimeout(paint,40);};if(v.requestVideoFrameCallback)v.requestVideoFrameCallback(paint);};e.target.value='';});
+$('wmImageFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;clearWmAsset();projectFiles.watermark=f;wmAssetUrl=URL.createObjectURL(f);const im=new Image();im.onload=()=>{wmImageEl=im;wmAssetName=f.name;$('wmAssetName').textContent=f.name;$('wmRemoveAsset').hidden=false;wmType='image';setWmType('image');};im.src=wmAssetUrl;e.target.value='';});
+$('wmVideoFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;clearWmAsset();projectFiles.watermark=f;wmAssetUrl=URL.createObjectURL(f);const v=document.createElement('video');v.src=wmAssetUrl;v.muted=true;v.loop=true;v.playsInline=true;v.onloadeddata=()=>{wmVideoEl=v;wmAssetName=f.name;$('wmAssetName').textContent=f.name;$('wmRemoveAsset').hidden=false;wmType='video';setWmType('video');v.play().catch(()=>{});const paint=()=>{if(wmVideoEl!==v)return;if(!isPlaying)drawFrame(getCurrentTime());if(v.requestVideoFrameCallback)v.requestVideoFrameCallback(paint);else setTimeout(paint,40);};if(v.requestVideoFrameCallback)v.requestVideoFrameCallback(paint);};e.target.value='';});
 function redraw(){ syncSettings(); changed(); drawFrame(getCurrentTime()); }
 function toast(m){ $('projStatus').textContent=m; }
 const esc = t => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -3503,6 +3518,25 @@ const esc = t => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>
 // tipografía propia (se guarda dentro del .lyr)
 function bufToB64(buf){ let s='';const u=new Uint8Array(buf);for(let i=0;i<u.length;i+=0x8000) s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000)); return btoa(s); }
 function b64ToBuf(b){ const s=atob(b),u=new Uint8Array(s.length); for(let i=0;i<s.length;i++) u[i]=s.charCodeAt(i); return u.buffer; }
+const LYRIC_PROJECT_MAGIC='LYRICPRJ', PROJECT_MEDIA_ORDER=['audio','image','video','watermark'];
+function makeProjectBlob(){
+  const p=getProject(),parts=[];
+  for(const key of PROJECT_MEDIA_ORDER){const file=projectFiles[key];if(!file)continue;p.assets[key]={name:file.name,type:file.type||'application/octet-stream',size:file.size,embedded:true};parts.push(file);}
+  const meta=new TextEncoder().encode(JSON.stringify(p)),header=new Uint8Array(12);
+  for(let i=0;i<LYRIC_PROJECT_MAGIC.length;i++)header[i]=LYRIC_PROJECT_MAGIC.charCodeAt(i);
+  new DataView(header.buffer).setUint32(8,meta.byteLength);
+  return new Blob([header,meta,...parts],{type:'application/x-lyricstudio-project'});
+}
+async function readProjectFile(file){
+  const head=new Uint8Array(await file.slice(0,12).arrayBuffer()),isPackage=head.length===12&&LYRIC_PROJECT_MAGIC.split('').every((c,i)=>head[i]===c.charCodeAt(0));
+  if(!isPackage)return {project:JSON.parse(await file.text()),media:{}};
+  const metaSize=new DataView(head.buffer,head.byteOffset,head.byteLength).getUint32(8),metaEnd=12+metaSize;
+  if(metaEnd>file.size)throw new Error('El archivo de proyecto está incompleto.');
+  const p=JSON.parse(await file.slice(12,metaEnd).text()),media={};let offset=metaEnd;
+  for(const key of PROJECT_MEDIA_ORDER){const asset=p.assets&&p.assets[key];if(!asset||!asset.embedded)continue;const end=offset+Number(asset.size);if(!Number.isSafeInteger(end)||end>file.size)throw new Error('Falta un archivo multimedia dentro del proyecto.');media[key]=new File([file.slice(offset,end,asset.type)],asset.name||key,{type:asset.type||'application/octet-stream'});offset=end;}
+  return {project:p,media};
+}
+function decodeProjectFile(asset){return asset&&asset.data?new File([b64ToBuf(asset.data)],asset.name||'asset',{type:asset.type||'application/octet-stream'}):null;}
 async function registerCustomFont(buf,label){
   if(!canUseFont('CustomUserFont')){ openUpgradeForFeature(); return; }
   const ff=new FontFace('CustomUserFont',buf); await ff.load();
@@ -3516,38 +3550,91 @@ async function registerCustomFont(buf,label){
 // proyecto
 function getProject(){
   syncSettings();
-  return { app:'lyric-studio', v:1, name:$('projName').value.trim(), savedAt:new Date().toISOString(),
+  return { app:'lyric-studio', v:2, requiresPro:!!featurePro, name:$('projName').value.trim(), savedAt:new Date().toISOString(),
     vlocked:vlocked, lines:JSON.parse(JSON.stringify(lyricLines)), settings:{...S},
-    assets:{ audio:fileNames.dropAudio||'', image:fileNames.dropImg||'', video:fileNames.dropVid||'',
+    workspace:{studyMode:!!studyMode,workstation:{...workstationSettings},guidesOn:!!document.querySelector('#center')?.classList.contains('guides-on'),playbackRate:+$('rate').value||1,loopOn:!!loopOn,tlStart:typeof tlStart==='number'?tlStart:0,pps:typeof pps==='number'?pps:50},
+    assets:{ audio:fileNames.dropAudio||'', image:fileNames.dropImg||'', video:fileNames.dropVid||'', watermark:wmAssetName||'',
              font: customFontB64 ? {label:customFontLabel,data:customFontB64} : null } };
 }
-async function loadProject(p){
+function projectRequiresPro(p){
+  if(p.requiresPro===true)return true;
+  const a=p.assets||{},s=p.settings||{};
+  if(p.workspace&&(p.workspace.studyMode||p.workspace.guidesOn||p.workspace.workstation?.enabled))return true;
+  if(a.font||a.watermark&&(typeof a.watermark==='object'||typeof a.watermark==='string'))return true;
+  if(s.watermark===false||s.wmType&&s.wmType!=='text'||s.wmSize>2.2||s.wmText&&s.wmText!=='LyricStudio.site')return true;
+  return (p.lines||[]).some(l=>l.kf?.length||l.wt?.length||l.ly||l.st);
+}
+async function loadProject(p,embeddedFiles={}){
+  if(projectRequiresPro(p)&&!featurePro){const err=new Error('Este proyecto contiene funciones PRO. Iniciá sesión con una cuenta PRO para abrirlo.');err.code='PRO_REQUIRED';throw err;}
   loading=true;
   try{
     const a=p.assets||{};
     if(a.font&&a.font.data&&canUseFont('CustomUserFont')){ await registerCustomFont(b64ToBuf(a.font.data),a.font.label||'tipografía'); customFontB64=a.font.data; customFontLabel=a.font.label||''; }
+    const embeddedAudio=embeddedFiles.audio||decodeProjectFile(a.audio),embeddedImage=embeddedFiles.image||decodeProjectFile(a.image),embeddedVideo=embeddedFiles.video||decodeProjectFile(a.video),embeddedWm=embeddedFiles.watermark||decodeProjectFile(a.watermark);
+    if(embeddedAudio){fileNames.dropAudio=embeddedAudio.name;useAudioFile(embeddedAudio);}
+    if(embeddedImage){fileNames.dropImg=embeddedImage.name;useBackgroundImage(embeddedImage);}
+    let videoReady=true;if(embeddedVideo){fileNames.dropVid=embeddedVideo.name;videoReady=await useBackgroundVideo(embeddedVideo);}
+    if(embeddedWm){clearWmAsset();projectFiles.watermark=embeddedWm;wmAssetName=embeddedWm.name;wmAssetUrl=URL.createObjectURL(embeddedWm);$('wmAssetName').textContent=wmAssetName;$('wmRemoveAsset').hidden=false;if((p.settings||{}).wmType==='video'){const v=document.createElement('video');v.src=wmAssetUrl;v.muted=true;v.loop=true;v.playsInline=true;v.onloadeddata=()=>{wmVideoEl=v;v.play().catch(()=>{});};}else{const im=new Image();im.onload=()=>wmImageEl=im;im.src=wmAssetUrl;}}
     $('projName').value=p.name||'';
     lyricLines=(p.lines||[]).map(l=>({...l,start:+l.start,end:+l.end,text:String(l.text)})); sanitizeProLineStyles();
     applySettings({...DEF_VIDEO,...DEF_STYLE,...(p.settings||{})}); setMode((p.vlocked??(p.lines&&p.lines.length>0))?'lyrics':'video',(p.vlocked??(p.lines&&p.lines.length>0)));
-    if(a.audio&&!audioLoaded){ fileNames.dropAudio=a.audio; $('dropAudio').textContent='Falta el audio: '+a.audio+' (click para cargarlo)'; $('audioInfo').textContent='El proyecto usa «'+a.audio+'». Volvé a cargarlo.'; }
-    if(a.image&&!bgImageEl){ fileNames.dropImg=a.image; $('dropImg').textContent='Falta la imagen: '+a.image; }
-    if(a.video&&!bgVideoEl){ fileNames.dropVid=a.video; $('dropVid').textContent='Falta el video: '+a.video; }
-    buildEditor(); checkReady(); drawFrame(getCurrentTime());
+    if(typeof a.audio==='string'&&a.audio&&!audioLoaded){ fileNames.dropAudio=a.audio; $('dropAudio').textContent='Falta el audio: '+a.audio+' (click para cargarlo)'; $('audioInfo').textContent='El proyecto usa «'+a.audio+'». Volvé a cargarlo.'; }
+    if(typeof a.image==='string'&&a.image&&!bgImageEl){ fileNames.dropImg=a.image; $('dropImg').textContent='Falta la imagen: '+a.image; }
+    if(typeof a.video==='string'&&a.video&&!bgVideoEl){ fileNames.dropVid=a.video; $('dropVid').textContent='Falta el video: '+a.video; }
+    if(p.workspace){studyMode=!!p.workspace.studyMode;document.querySelector('#center')?.classList.toggle('study-on',studyMode);document.querySelector('#center')?.classList.toggle('guides-on',!!p.workspace.guidesOn);if(p.workspace.workstation){workstationSettings={...workstationSettings,...p.workspace.workstation};saveWorkstationSettings();}if(p.workspace.playbackRate){$('rate').value=p.workspace.playbackRate;audioEl.playbackRate=p.workspace.playbackRate;}if(typeof loopOn!=='undefined')loopOn=!!p.workspace.loopOn;if(typeof p.workspace.tlStart==='number')tlStart=p.workspace.tlStart;if(typeof p.workspace.pps==='number')pps=p.workspace.pps;}
+    buildEditor(); checkReady(); drawFrame(getCurrentTime());return !videoReady;
   } finally { loading=false; }
 }
 function downloadBlob(blob,name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); }
+function projectLoadOverlay(message){let el=$('projectLoadOverlay');if(!el){el=document.createElement('div');el.id='projectLoadOverlay';el.style.cssText='position:fixed;inset:0;z-index:20000;background:#08070de8;display:grid;place-items:center;padding:20px';el.innerHTML='<div style="width:min(440px,92vw);padding:26px;border:1px solid #69563a;border-radius:16px;background:#17131d;box-shadow:0 24px 80px #000a;color:#f4edf7;font:14px Inter,system-ui;text-align:center"><div style="font-size:20px;font-weight:700;margin-bottom:8px">Abriendo proyecto</div><div data-load-message style="color:#c8bfcc;margin-bottom:18px"></div><div data-load-progress style="height:7px;border-radius:99px;background:#312a36;overflow:hidden"><div style="height:100%;width:38%;border-radius:99px;background:linear-gradient(90deg,#bd8739,#ffe29a,#bd8739);animation:projectLoadMove 1.2s ease-in-out infinite alternate"></div></div><div data-load-hint style="color:#89808e;font-size:12px;margin-top:12px">Los proyectos con videos pesados pueden tardar según el equipo.</div><button data-load-close style="display:none;margin:18px auto 0;padding:9px 22px;border:1px solid #806b4b;border-radius:8px;background:#302537;color:#fff;cursor:pointer">Cerrar</button></div><style>@keyframes projectLoadMove{from{transform:translateX(-15%)}to{transform:translateX(190%)}}</style>';el.querySelector('[data-load-close]').onclick=hideProjectLoadOverlay;document.body.appendChild(el);}el.querySelector('[data-load-message]').textContent=message;el.querySelector('[data-load-progress]').style.display='block';el.querySelector('[data-load-hint]').style.display='block';el.querySelector('[data-load-close]').style.display='none';el.style.display='grid';}
+function projectLoadMessage(message){const el=$('projectLoadOverlay');if(el)el.querySelector('[data-load-message]').textContent=message;}
+function projectLoadError(message){const el=$('projectLoadOverlay');if(!el)return;el.querySelector('[data-load-message]').textContent=message;el.querySelector('[data-load-progress]').style.display='none';el.querySelector('[data-load-hint]').style.display='none';el.querySelector('[data-load-close]').style.display='block';}
+function hideProjectLoadOverlay(){const el=$('projectLoadOverlay');if(el)el.style.display='none';}
+function saveWorkstationSettings(){try{localStorage.setItem('lyricStudio.workstation',JSON.stringify(workstationSettings));}catch(e){}}
+function ensureWorkstationModal(){
+  if($('workstationModal'))return $('workstationModal');
+  const modal=document.createElement('div');modal.id='workstationModal';modal.className='ws-modal';modal.hidden=true;modal.innerHTML='<section class="ws-box" role="dialog" aria-modal="true" aria-labelledby="wsTitle"><h2 id="wsTitle">Configurar WorkStation</h2><p>La ventana principal queda para editar y usar la timeline. La ventana de salida muestra información del verso y una vista previa grande en el otro monitor.</p><div class="ws-screen-fields"><label>Monitor principal · edición<select id="wsMainScreen"></select></label><label>Monitor secundario · vista previa<select id="wsOutputScreen"></select></label></div><div id="wsScreenStatus">Detectá las pantallas para asignar cada monitor.</div><div class="ws-actions"><button class="btn-sm" type="button" data-ws-close>Cerrar</button><button class="btn-sm" type="button" data-ws-detect>Detectar monitores</button><button class="btn-primary" type="button" data-ws-start>Abrir WorkStation</button></div></section>';
+  document.body.appendChild(modal);modal.addEventListener('click',e=>{if(e.target===modal||e.target.closest('[data-ws-close]'))modal.hidden=true;});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)modal.hidden=true;});
+  modal.querySelector('[data-ws-detect]').onclick=()=>detectWorkstationScreens();modal.querySelector('[data-ws-start]').onclick=()=>launchWorkstation();
+  ['wsMainScreen','wsOutputScreen'].forEach(id=>$(id).addEventListener('change',()=>{workstationSettings.mainScreen=+$('wsMainScreen').value;workstationSettings.outputScreen=+$('wsOutputScreen').value;saveWorkstationSettings();}));
+  return modal;
+}
+function populateWorkstationScreens(screens){
+  const names=screens.map((s,i)=>`Pantalla ${i+1}${s.isPrimary?' · principal':''} · ${s.availWidth} × ${s.availHeight}`);
+  for(const [id,key] of [['wsMainScreen','mainScreen'],['wsOutputScreen','outputScreen']]){const select=$(id);select.innerHTML=names.map((n,i)=>`<option value="${i}">${esc(n)}</option>`).join('');if(screens.length>1&&id==='wsOutputScreen'&&workstationSettings.outputScreen===0)workstationSettings.outputScreen=1;select.value=String(Math.min(screens.length-1,Math.max(0,workstationSettings[key]||0)));}
+  workstationSettings.mainScreen=+$('wsMainScreen').value||0;workstationSettings.outputScreen=+$('wsOutputScreen').value||0;saveWorkstationSettings();
+}
+async function detectWorkstationScreens(){
+  const status=$('wsScreenStatus');if(!window.getScreenDetails){status.textContent='Este navegador no permite detectar pantallas. Podés abrir la vista y arrastrar su ventana al segundo monitor.';return null;}
+  status.textContent='Esperando permiso para consultar las pantallas…';
+  try{workstationScreenDetails=await window.getScreenDetails();populateWorkstationScreens(workstationScreenDetails.screens);status.textContent=workstationScreenDetails.screens.length>1?'Pantallas detectadas. Elegí dónde va cada vista.':'Solo se detectó una pantalla; conectá la segunda o usá la ventana manualmente.';return workstationScreenDetails.screens;}
+  catch(err){status.textContent='No se pudieron consultar las pantallas. La vista secundaria se puede mover manualmente.';return null;}
+}
+function openWorkstationSettings(){if(!requireProFeature('El modo WorkStation'))return;const modal=ensureWorkstationModal();modal.hidden=false;if(!window.getScreenDetails){$('wsScreenStatus').textContent='Este navegador no ofrece detección de pantallas. La ventana de salida se puede arrastrar al monitor secundario.';return;}if(!workstationScreenDetails)$('wsScreenStatus').textContent='Pulsa “Detectar monitores” para elegir las pantallas.';else populateWorkstationScreens(workstationScreenDetails.screens);}
+function workstationDocument(){return '<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lyric Studio · Monitor de salida</title><style>*{box-sizing:border-box}body{margin:0;background:#09070c;color:#f6f1f7;font:14px system-ui;min-height:100vh;display:grid;grid-template-rows:auto 1fr}header{display:flex;align-items:center;gap:16px;padding:12px 18px;background:#17121d;border-bottom:1px solid #ffffff20}.brand{font-weight:750;letter-spacing:.02em}.time{font:600 14px ui-monospace,monospace;color:#e8b45f}.line{flex:1;min-width:0;color:#eee7f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.close{border:1px solid #ffffff2a;border-radius:8px;background:#241c29;color:#eee;padding:8px 12px;cursor:pointer}.area{min-height:0;display:grid;grid-template-columns:minmax(190px,260px) 1fr;gap:14px;padding:14px}.info{padding:18px;border:1px solid #ffffff18;border-radius:12px;background:#17121d}.info small{display:block;color:#a79baa;text-transform:uppercase;letter-spacing:.12em;font-size:10px;margin:4px 0 8px}.info strong{display:block;font-size:16px;overflow-wrap:anywhere}.preview{position:relative;display:grid;place-items:center;min-width:0;min-height:0;overflow:hidden;border:1px solid #ffffff18;border-radius:12px;background:#17121d}.preview canvas{position:absolute;width:100%;height:100%;object-fit:contain}.preview canvas#backdrop{object-fit:cover;filter:blur(26px) brightness(.42);transform:scale(1.08)}.preview canvas#out{z-index:1}.hint{position:absolute;z-index:2;right:12px;bottom:10px;color:#ffffff91;font-size:11px}@media(max-width:700px){.area{grid-template-columns:1fr;grid-template-rows:auto 1fr}.info{padding:10px}.info small{display:inline;margin-right:8px}}</style><header><span class="brand">LYRIC STUDIO · WORKSTATION</span><span class="time" id="time">00:00</span><span class="line" id="line">Listo para reproducir</span><button class="close" onclick="window.close()">Cerrar monitor</button></header><main class="area"><aside class="info"><small>Proyecto</small><strong id="project">Lyric Studio</strong><small style="margin-top:22px">Verso actual</small><strong id="verse">—</strong><small style="margin-top:22px">Estado</small><strong id="status">Vista de salida conectada</strong></aside><section class="preview"><canvas id="backdrop"></canvas><canvas id="out"></canvas><span class="hint">VISTA PREVIA · SALIDA</span></section></main></html>';}
+async function launchWorkstation(){
+  if(!requireProFeature('El modo WorkStation'))return;
+  const win=window.open('about:blank','lyricstudio-workstation','popup=yes,width=1200,height=850');if(!win){$('wsScreenStatus').textContent='El navegador bloqueó la ventana. Permití ventanas emergentes para Lyric Studio e intentá de nuevo.';return;}
+  workstationWindow=win;win.document.open();win.document.write(workstationDocument());win.document.close();$('workstationModal').hidden=true;
+  win.addEventListener('beforeunload',()=>{try{if(window.opener)window.opener.postMessage({type:'lyricstudio-workstation-close'},'*');}catch(e){}});
+  if(!workstationMessageBound){window.addEventListener('message',e=>{if(e.source===workstationWindow&&e.data?.type==='lyricstudio-workstation-close'){workstationWindow=null;toast('Monitor WorkStation desconectado.');}});workstationMessageBound=true;}
+  if(studyMode){studyMode=false;document.querySelector('#center')?.classList.remove('study-on');$('studyToggle')?.classList.remove('on');if($('studyToggle'))$('studyToggle').textContent='Modo Estudio';}
+  if(window.getScreenDetails){const screens=await detectWorkstationScreens();if(screens?.length){const main=screens[workstationSettings.mainScreen]||screens.find(s=>s.isPrimary)||screens[0],out=screens[workstationSettings.outputScreen]||screens.find(s=>!s.isPrimary)||screens[0];try{window.moveTo(main.availLeft+8,main.availTop+8);win.moveTo(out.availLeft+8,out.availTop+8);win.resizeTo(out.availWidth-16,out.availHeight-16);}catch(e){}}}
+  if(!window.getScreenDetails)toast('WorkStation abierto. Arrastrá la ventana de salida al segundo monitor.');else toast('WorkStation activo en las pantallas configuradas.');
+  drawFrame(getCurrentTime());
+}
+let workstationMessageBound=false;
+function syncWorkstationPreview(t){if(!workstationWindow||workstationWindow.closed){workstationWindow=null;return;}try{const d=workstationWindow.document,out=d.getElementById('out'),back=d.getElementById('backdrop');if(!out||!back)return;for(const target of [out,back])if(target.width!==canvas.width||target.height!==canvas.height){target.width=canvas.width;target.height=canvas.height;}out.getContext('2d').drawImage(canvas,0,0);back.getContext('2d').drawImage(canvas,0,0);d.getElementById('time').textContent=fmtTime(t);d.getElementById('project').textContent=$('projName').value.trim()||'Lyric Studio';const current=activeLines(t),verse=current.map(l=>l.text).join(' · ');d.getElementById('verse').textContent=verse||'—';d.getElementById('line').textContent=verse||'Listo para reproducir';d.getElementById('status').textContent=isPlaying?'Reproduciendo':'En pausa';}catch(e){workstationWindow=null;}}
 const safeName = () => ($('projName').value.trim()||'proyecto').replace(/[\\/:*?"<>|]+/g,'-');
-$('saveBtn').onclick=()=>{ downloadBlob(new Blob([JSON.stringify(getProject())],{type:'application/json'}),safeName()+'.lyr'); toast('Guardado: '+safeName()+'.lyr'); };
+$('saveBtn').onclick=()=>{const name=safeName()+'.lyr';try{toast('Preparando el proyecto…');downloadBlob(makeProjectBlob(),name);toast('Guardado con configuraciones y medios: '+name);}catch(err){console.error(err);toast('No pude guardar el proyecto. Revisá el espacio disponible y volvé a intentar.');}};
 $('openBtn').onclick=()=>$('projFile').click();
-$('projFile').addEventListener('change',e=>{
+$('projFile').addEventListener('change',async e=>{
   const f=e.target.files[0]; if(!f) return;
-  const r=new FileReader();
-  r.onload=async()=>{
-    try{ const p=JSON.parse(r.result); if(p.app!=='lyric-studio'||!Array.isArray(p.lines)) throw 0;
-      await loadProject(p); commit(); autosave(); toast('Abierto: '+f.name); enterEditor();
-    }catch(err){ toast('Ese archivo no es un proyecto de Lyric Studio.'); }
-  };
-  r.readAsText(f); e.target.value='';
+  let opened=false;projectLoadOverlay('Leyendo el proyecto…');
+  try{ const {project:p,media}=await readProjectFile(f); if(p.app!=='lyric-studio'||!Array.isArray(p.lines)) throw 0;
+    projectLoadMessage(media.video?'Preparando el video de fondo…':'Restaurando ajustes y versos…');const videoWarning=await loadProject(p,media);commit();autosave();toast(videoWarning?'Proyecto abierto, pero el navegador no pudo preparar el video. Probá con MP4 o WebM.':'Abierto: '+f.name);enterEditor();opened=true;
+  }catch(err){const message=err?.code==='PRO_REQUIRED'?err.message:err?.message||'Ese archivo no es un proyecto de Lyric Studio.';toast(message);projectLoadError(message);}
+  finally{if(opened)hideProjectLoadOverlay();e.target.value='';}
 });
 $('projName').addEventListener('input',changed);
 
@@ -3577,9 +3664,8 @@ function matchesHotkey(e,id){const b=hotkeys[id];return !!b&&e.code===b.code&&!!
 function saveHotkeys(){try{localStorage.setItem(HOTKEY_KEY,JSON.stringify(hotkeys));}catch(e){}}
 
 document.addEventListener('keydown',e=>{
-  if(matchesHotkey(e,'save')){e.preventDefault();$('saveBtn').click();return;} const k=e.key.toLowerCase();
-  if(k==='s'){ e.preventDefault(); $('saveBtn').click(); return; }
-  if(e.target.matches('textarea, input[type=text]')) return;
+  if(matchesHotkey(e,'save')){e.preventDefault();$('saveBtn').click();return;}
+  if(e.target.closest('input,textarea,select,[contenteditable="true"]'))return;
   if(matchesHotkey(e,'undo')){e.preventDefault();undo();}else if(matchesHotkey(e,'redo')){e.preventDefault();redo();}
 });
 
@@ -3781,7 +3867,7 @@ try{
     pendingRestore=true; $('restoreBar').style.display='flex';
     $('restoreInfo').textContent='Encontré un proyecto sin guardar'+(p.name?': «'+p.name+'»':'')+' ('+new Date(p.savedAt).toLocaleString('es-AR')+').';
     const close=()=>{ pendingRestore=false; $('restoreBar').style.display='none'; };
-    $('restoreYes').onclick=async()=>{ await loadProject(p); close(); commit(); autosave(); enterEditor(); };
+    $('restoreYes').onclick=async()=>{ try{await loadProject(p);close();commit();autosave();enterEditor();}catch(err){toast(err?.code==='PRO_REQUIRED'?err.message:'No se pudo restaurar el proyecto.');} };
     $('restoreNo').onclick=close;
   }
 }catch(e){}
@@ -4153,12 +4239,14 @@ function tutorialPlan(mode){
     {title:'Organizá en dos capas',target:'#autoL',tab:'letra',text:'Alterná tus versos en dos capas para ordenar las entradas y mantener cada línea visible mientras aparece la siguiente.'},
     {title:'Personalizá la marca de agua',target:'#wmConfigOpen',tab:'pos',info:'watermark',text:'Abrí Configurar marca de agua para usar texto, imagen o video en bucle. Elegí la esquina, el tamaño y la opacidad; en PRO también podés desactivarla.'},
     {title:'Modo Estudio',target:'#brandMenu [data-action="study"]',menu:true,text:'Activá la vista doble: una pantalla de edición con guías y otra limpia, tal como se verá el video.'},
+    {title:'WorkStation y monitores',target:'#brandMenu [data-action="workstation"]',menu:true,info:'workstation',text:'WorkStation mantiene el editor y la timeline en el monitor principal. Abre otra ventana con la información del verso y una vista previa grande para ubicarla en el segundo monitor.'},
     {title:'Exportación PRO',target:'#brandMenu [data-action="export"]',menu:true,text:'En MP4 podés elegir resolución y FPS compatibles con tu equipo. Las exportaciones de alta calidad exigen más recursos.'}
   ]);
 }
 function tutorialInfoMarkup(kind){
   if(kind==='keyframes')return '<div class="tutorial-info-head"><div><span class="tutorial-info-label">Ventana informativa · PRO</span><h3 id="tutorialInfoTitle">Keyframes: animá la vida del verso</h3></div><button class="btn-sm tutorial-info-close" type="button" data-info-close aria-label="Cerrar ventana">×</button></div><p>Un keyframe guarda una pose del texto en un instante. Al agregar varios, Lyric Studio interpola el movimiento entre ellos.</p><div class="tutorial-kf-demo"><div class="tutorial-kf-stage"><span class="tutorial-kf-word">Tu verso</span></div><div class="tutorial-kf-track"><i style="left:12%"></i><i style="left:48%"></i><i style="left:84%"></i><b></b></div></div><div class="tutorial-info-list"><span>1. Elegí un verso y abrí Keyframes</span><span>2. Mové el cursor por su duración</span><span>3. Arrastrá el texto a otra pose</span><span>4. Agregá puntos y ajustá escala, giro y opacidad</span></div><p>La línea representa desde que aparece el verso hasta que desaparece; los rombos son sus keyframes.</p>';
   if(kind==='watermark')return '<div class="tutorial-info-head"><div><span class="tutorial-info-label">Ventana informativa · PRO</span><h3 id="tutorialInfoTitle">Marca de agua a tu manera</h3></div><button class="btn-sm tutorial-info-close" type="button" data-info-close aria-label="Cerrar ventana">×</button></div><p>La marca aparece encima del video durante la reproducción y la exportación. En Free se mantiene la firma LyricStudio.site; PRO permite personalizarla.</p><div class="tutorial-wm-demo"><div class="tutorial-wm-screen">Vista del lyric video<span class="tutorial-wm-mark">Tu marca</span></div></div><div class="tutorial-info-list"><span>Texto propio o imagen</span><span>Video en bucle</span><span>Esquina y tamaño</span><span>Opacidad y activación</span></div><p>Usá <b>Configurar marca de agua…</b> para abrir los controles. La muestra del tutorial no modifica tu proyecto.</p>';
+  if(kind==='workstation')return '<div class="tutorial-info-head"><div><span class="tutorial-info-label">WorkStation · PRO</span><h3 id="tutorialInfoTitle">Editá en una pantalla y monitoreá en otra</h3></div><button class="btn-sm tutorial-info-close" type="button" data-info-close aria-label="Cerrar ventana">×</button></div><div class="tutorial-workstation-demo"><div><b>MONITOR 1 · EDICIÓN</b><span>Editor + timeline</span></div><i>⇄</i><div><b>MONITOR 2 · SALIDA</b><span>Información + vista previa grande</span></div></div><p>En el menú de Lyric Studio elegí <b>Configurar monitores…</b>, asigná la pantalla principal y la de salida, y abrí WorkStation. Si el navegador no puede detectar las pantallas, mové la ventana de salida manualmente.</p>';
   return '';
 }
 function tutorialPaintSpot(){
@@ -4234,8 +4322,8 @@ function updateProMarkers(){
   const controls=document.querySelector('#brandMenu [data-action="controls"]'),guides=document.querySelector('#brandMenu [data-action="guides"]');
   if(controls)controls.classList.toggle('pro-locked',!featurePro);
   if(guides)guides.classList.toggle('pro-locked',!featurePro);
-  const studyMenu=document.querySelector('#brandMenu [data-action="study"]'),watermarkMenu=document.querySelector('#brandMenu [data-action="watermark"]'),captureMenu=document.querySelector('#brandMenu [data-action="capture"]'),keyframeMenu=document.querySelector('.line-context [data-line-action="kf"]');
-  [studyMenu,watermarkMenu,captureMenu,keyframeMenu].forEach(el=>el?.classList.toggle('pro-locked',!featurePro));
+  const studyMenu=document.querySelector('#brandMenu [data-action="study"]'),workstationMenu=document.querySelector('#brandMenu [data-action="workstation"]'),watermarkMenu=document.querySelector('#brandMenu [data-action="watermark"]'),captureMenu=document.querySelector('#brandMenu [data-action="capture"]'),keyframeMenu=document.querySelector('.line-context [data-line-action="kf"]');
+  [studyMenu,workstationMenu,watermarkMenu,captureMenu,keyframeMenu].forEach(el=>el?.classList.toggle('pro-locked',!featurePro));
   const preset=$('stylePreset');if(preset)for(const o of preset.options){if(o.value)o.textContent=o.textContent.replace(/ · 🔒 PRO$/,'')+(featurePro?'':' · 🔒 PRO');}
   const mp4=$('expFormat')?.querySelector('option[value="mp4"]');if(mp4)mp4.textContent='MP4 · render por cuadros'+(featurePro?'':' · 🔒 PRO');
 }
@@ -4442,12 +4530,14 @@ buildPresets('');
   document.body.prepend(app); const q=x=>app.querySelector(x), panes={};
   P.forEach(p=>{ const h=p.querySelector('h2'); h.textContent=h.textContent.replace(/^\d+\s·\s/,''); });
   const brand=q('.brand'),brandTrigger=document.createElement('button');brandTrigger.className='brand-trigger';brandTrigger.type='button';brandTrigger.setAttribute('aria-haspopup','menu');brandTrigger.setAttribute('aria-expanded','false');brandTrigger.innerHTML='<img class="logo-img" src="icon-192.png" alt="" width="34" height="34"><h1>Lyric Studio</h1><span aria-hidden="true">⌄</span>';
-  const brandMenu=document.createElement('div');brandMenu.className='brand-menu';brandMenu.id='brandMenu';brandMenu.hidden=true;brandMenu.setAttribute('role','menu');brandMenu.innerHTML='<div class="menu-heading">Espacio de trabajo</div><button type="button" role="menuitem" data-action="study">◫ <span>Modo Estudio</span><span class="menu-check" id="menuStudyCheck"></span></button><button type="button" role="menuitem" data-action="guides">⌗ <span>Guías y centro</span><span class="menu-check" id="menuGuidesCheck"></span></button><button type="button" role="menuitem" data-action="watermark">▧ <span>Marca de agua…</span></button><button type="button" role="menuitem" data-action="controls">⌨ <span>Editar controles…</span></button><div class="menu-heading">Proyecto</div><button type="button" role="menuitem" data-action="open">↗ <span>Abrir proyecto</span></button><button type="button" role="menuitem" data-action="save">▣ <span>Guardar proyecto</span></button><button type="button" role="menuitem" data-action="export">⇧ <span>Exportar video</span></button><button type="button" role="menuitem" data-action="capture">▧ <span>Captura PNG</span></button><button type="button" role="menuitem" data-action="fullscreen">⛶ <span>Pantalla completa</span></button><div class="menu-heading">Ayuda</div><button type="button" role="menuitem" data-action="shortcuts">⌨ <span>Atajos de teclado</span></button><button type="button" role="menuitem" data-action="licenses">ⓘ <span>Licencias</span></button><div class="menu-heading">Legal</div><a role="menuitem" data-legal href="terminos.html" target="_blank" rel="noopener">▤ <span>Términos y condiciones</span></a><a role="menuitem" data-legal href="privacidad.html" target="_blank" rel="noopener">▤ <span>Política de privacidad</span></a>';
+  const brandMenu=document.createElement('div');brandMenu.className='brand-menu';brandMenu.id='brandMenu';brandMenu.hidden=true;brandMenu.setAttribute('role','menu');brandMenu.innerHTML='<div class="menu-heading">Espacio de trabajo</div><button type="button" role="menuitem" data-action="workstation">▣ <span>WorkStation</span></button><button type="button" role="menuitem" data-action="workstation-config">⚙ <span>Configurar monitores…</span></button><button type="button" role="menuitem" data-action="study">◫ <span>Modo Estudio</span><span class="menu-check" id="menuStudyCheck"></span></button><button type="button" role="menuitem" data-action="guides">⌗ <span>Guías y centro</span><span class="menu-check" id="menuGuidesCheck"></span></button><button type="button" role="menuitem" data-action="watermark">▧ <span>Marca de agua…</span></button><button type="button" role="menuitem" data-action="controls">⌨ <span>Editar controles…</span></button><div class="menu-heading">Proyecto</div><button type="button" role="menuitem" data-action="open">↗ <span>Abrir proyecto</span></button><button type="button" role="menuitem" data-action="save">▣ <span>Guardar proyecto</span></button><button type="button" role="menuitem" data-action="export">⇧ <span>Exportar video</span></button><button type="button" role="menuitem" data-action="capture">▧ <span>Captura PNG</span></button><button type="button" role="menuitem" data-action="fullscreen">⛶ <span>Pantalla completa</span></button><div class="menu-heading">Ayuda</div><button type="button" role="menuitem" data-action="shortcuts">⌨ <span>Atajos de teclado</span></button><button type="button" role="menuitem" data-action="licenses">ⓘ <span>Licencias</span></button><div class="menu-heading">Legal</div><a role="menuitem" data-legal href="terminos.html" target="_blank" rel="noopener">▤ <span>Términos y condiciones</span></a><a role="menuitem" data-legal href="privacidad.html" target="_blank" rel="noopener">▤ <span>Política de privacidad</span></a>';
   brandMenu.innerHTML=brandMenu.innerHTML.replace('data-action="shortcuts">⌨ <span>Atajos de teclado</span></button>','data-action="shortcuts">⌨ <span>Atajos de teclado</span></button><button type="button" role="menuitem" data-action="tutorial">✦ <span>Tutorial interactivo</span></button>');
   brand.append(brandTrigger,brandMenu);
   const closeBrandMenu=()=>{brandMenu.hidden=true;brandTrigger.setAttribute('aria-expanded','false');};
   brandTrigger.addEventListener('click',e=>{e.stopPropagation();brandMenu.hidden=!brandMenu.hidden;brandTrigger.setAttribute('aria-expanded',String(!brandMenu.hidden));});
   brandMenu.addEventListener('click',e=>{if(e.target.closest('[data-legal]')){closeBrandMenu();return;}const b=e.target.closest('[data-action]');if(!b)return;const a=b.dataset.action;
+    if(a==='workstation')launchWorkstation();
+    if(a==='workstation-config')openWorkstationSettings();
     if(a==='study'){if(requireProFeature('El Modo Estudio')){studyBtn.click();$('menuStudyCheck').textContent=studyMode?'✓':'';}}
     if(a==='guides'){if(requireProFeature('Las guías de edición')){const center=q('#center');center.classList.toggle('guides-on');$('menuGuidesCheck').textContent=center.classList.contains('guides-on')?'✓':'';syncStudyGuides();}}
     if(a==='watermark')openWatermarkModal();
@@ -4481,9 +4571,10 @@ buildPresets('');
   const studyBtn=document.createElement('button'); studyBtn.id='studyToggle'; studyBtn.className='btn-sm'; studyBtn.textContent='Modo Estudio'; studyBtn.title='Mostrar monitor de edición y salida limpia';
   const pv=q('.pv'), grid=document.createElement('div'); grid.id='studyGrid'; grid.className='study-grid';
   const editMonitor=document.createElement('div'); editMonitor.id='studyEditorMonitor'; editMonitor.className='study-monitor'; editMonitor.innerHTML='<span class="monitor-label">EDICIÓN · guías y controles</span><div class="study-guides"></div>';
+  stageBackdropCanvas=document.createElement('canvas');stageBackdropCanvas.className='monitor-backdrop';stageBackdropCanvas.setAttribute('aria-hidden','true');editMonitor.append(stageBackdropCanvas);
   const outputMonitor=document.createElement('div'); outputMonitor.id='studyOutputMonitor'; outputMonitor.className='study-monitor'; outputMonitor.innerHTML='<span class="monitor-label">SALIDA · cuadro limpio</span>';
   studyOutputCanvas=document.createElement('canvas'); studyOutputCanvas.id='studyOutput'; studyOutputCanvas.width=canvas.width; studyOutputCanvas.height=canvas.height; studyOutputCtx=studyOutputCanvas.getContext('2d');
-  editMonitor.append($('stage')); outputMonitor.append(studyOutputCanvas); grid.append(editMonitor,outputMonitor); pv.append(grid);
+  outputBackdropCanvas=document.createElement('canvas');outputBackdropCanvas.className='monitor-backdrop';outputBackdropCanvas.setAttribute('aria-hidden','true');editMonitor.append($('stage')); outputMonitor.append(outputBackdropCanvas,studyOutputCanvas); grid.append(editMonitor,outputMonitor); pv.append(grid);
   studyBtn.onclick=()=>{if(!requireProFeature('El Modo Estudio'))return;studyMode=!studyMode; q('#center').classList.toggle('study-on',studyMode);studyBtn.classList.toggle('on',studyMode);studyBtn.textContent=studyMode?'Salir de Estudio':'Modo Estudio';if($('menuStudyCheck'))$('menuStudyCheck').textContent=studyMode?'✓':'';drawFrame(getCurrentTime());};
   q('.tp').append(document.querySelector('.timecode'),document.querySelector('.transport'));
   const studyControls=document.createElement('div');studyControls.className='study-controls';studyControls.innerHTML='<label>X <input id="studyX" type="number" step="1"></label><label>Y <input id="studyY" type="number" step="1"></label><label>Ancho <input id="studyW" type="number" min="1" step="1"></label><label>Alto <input id="studyH" type="number" readonly></label><label>Rotación <input id="studyRot" type="number" step="1"></label><span class="hint" id="studyHint">Seleccioná un verso para ajustar</span>';
