@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lyric Studio — Generador de video-letras</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Lyric Studio: creá videos de letras sincronizadas desde un archivo .LRC o .SRT y tu audio. Elegí fuentes, animaciones y fondo, y exportá en MP4 desde el navegador.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex,nofollow">
+<!-- LANZAMIENTO (cuando la app pase a la raíz): cambiar la línea de arriba por
+     <meta name="robots" content="index,follow,max-image-preview:large">
+     y agregar <link rel="canonical" href="https://lyricstudio.site/"> -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lyric Studio">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Lyric Studio — Generador de video-letras">
+<meta property="og:description" content="Lyric Studio: creá videos de letras sincronizadas desde un archivo .LRC o .SRT y tu audio. Elegí fuentes, animaciones y fondo, y exportá en MP4 desde el navegador.">
+<meta property="og:url" content="https://lyricstudio.site/">
+<meta property="og:image" content="https://lyricstudio.site/icon-192.png">
+<meta property="og:image:alt" content="Logo de Lyric Studio">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lyric Studio — Generador de video-letras">
+<meta name="twitter:description" content="Lyric Studio: creá videos de letras sincronizadas desde un archivo .LRC o .SRT y tu audio. Elegí fuentes, animaciones y fondo, y exportá en MP4 desde el navegador.">
+<meta name="twitter:image" content="https://lyricstudio.site/icon-192.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lyric Studio","url":"https://lyricstudio.site/","description":"Lyric Studio: creá videos de letras sincronizadas desde un archivo .LRC o .SRT y tu audio. Elegí fuentes, animaciones y fondo, y exportá en MP4 desde el navegador.","applicationCategory":"MultimediaApplication","operatingSystem":"Web","inLanguage":"es","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@lyricstudio.site"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<meta name="theme-color" content="#1B1620">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lyric Studio">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>window.__lyricBootStarted=performance.now();</script>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<script>if(location.protocol==='http:'||location.protocol==='https:'){const m=document.createElement('link');m.rel='manifest';m.href='manifest.json';document.head.append(m);}</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<noscript><div style="padding:24px;font-family:sans-serif;color:#EFE9F2;background:#1B1620"><h1>Lyric Studio</h1><p>Lyric Studio: creá videos de letras sincronizadas desde un archivo .LRC o .SRT y tu audio. Elegí fuentes, animaciones y fondo, y exportá en MP4 desde el navegador.</p><p>Necesitás activar JavaScript para usar la aplicación.</p><p><a href="terminos.html" style="color:#EFE9F2">Términos y condiciones</a> · <a href="privacidad.html" style="color:#EFE9F2">Política de privacidad</a> · <a href="mailto:support@lyricstudio.site" style="color:#EFE9F2">support@lyricstudio.site</a></p></div></noscript>
+<div class="boot-splash" id="bootSplash" role="status" aria-live="polite" aria-label="Cargando Lyric Studio">
+  <div class="boot-card"><div class="boot-mark" aria-hidden="true">LS</div><p class="boot-brand">Lyric Studio</p><h2>Tu estudio está preparando la escena</h2><p class="boot-caption">Cargando herramientas creativas…</p><div class="boot-track" aria-hidden="true"><i></i></div><span class="boot-foot">Letras · Ritmo · Imagen</span></div>
+</div>
+<script>(()=>{const splash=document.getElementById('bootSplash');if(!splash)return;const started=window.__lyricBootStarted||performance.now(),wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));Promise.all([wait(Math.max(0,900-(performance.now()-started))),Promise.race([document.fonts?.ready||Promise.resolve(),wait(450)])]).then(()=>{splash.classList.add('leaving');setTimeout(()=>splash.remove(),420);});})();</script>
+<div class="export-interaction-shield" id="exportInteractionShield" hidden aria-hidden="true"></div>
+<div class="export-progress-top" id="exportProgressTop" hidden role="status" aria-live="polite">
+  <div class="export-progress-card"><div class="export-progress-head"><div class="export-progress-title"><span class="export-progress-kicker">Lyric Studio · Render</span><strong id="exportTopTitle">Preparando video</strong></div><div class="export-progress-actions"><span class="export-progress-eta" id="exportTopEta">Calculando…</span><span id="exportStopSlot"></span></div></div>
+    <div class="export-progress-track" role="progressbar" aria-label="Progreso de exportación" aria-valuemin="0" aria-valuemax="100"><div class="export-progress-fill" id="exportTopFill"></div></div>
+    <div class="export-progress-foot"><span id="exportTopPct">0%</span><span id="exportTopDetail">Preparando el proyecto</span></div></div>
+</div>
+<div class="wrap">
+  <header>
+    <img class="logo-img" src="icon-192.png" alt="Lyric Studio" width="34" height="34">
+    <h1>Lyric Studio</h1>
+    <span class="tag">.LRC / .SRT → VIDEO</span>
+  </header>
+  <p>Subí tu letra sincronizada, tu audio y el fondo que quieras. Armás la mezcla acá al lado y exportás un video listo para subir.</p>
+
+  <div class="projbar" id="restoreBar" style="display:none;">
+    <span id="restoreInfo" class="grow"></span>
+    <button class="btn-sm" id="restoreYes">Restaurar</button>
+    <button class="btn-sm" id="restoreNo">Descartar</button>
+  </div>
+  <div class="projbar">
+    <input type="text" id="projName" placeholder="Nombre del proyecto" aria-label="Nombre del proyecto">
+    <button class="btn-sm" id="openBtn">Abrir</button>
+    <button class="btn-sm" id="saveBtn">Guardar (.lyr)</button>
+    <button class="btn-sm" id="undoBtn" disabled title="Ctrl+Z">↶ Deshacer</button>
+    <button class="btn-sm" id="redoBtn" disabled title="Ctrl+Y">↷ Rehacer</button>
+    <span class="grow"></span>
+    <span id="projStatus">Sin cambios todavía</span>
+    <input type="file" id="projFile" accept=".lyr,.json">
+  </div>
+
+  <div class="grid">
+    <!-- CONTROLS -->
+    <div>
+      <div class="panel">
+        <h2>01 · Letra</h2>
+        <div class="drop" id="dropLyrics">Arrastrá o hacé click — .lrc / .srt</div>
+        <input type="file" id="fileLyrics" accept=".lrc,.srt,.txt">
+        <div class="hint" id="lyricsInfo">Sin archivo cargado.</div>
+        <label class="field">O pegá la letra sin tiempos</label>
+        <textarea id="pasteLyrics" rows="5" placeholder="Un verso por línea…"></textarea>
+        <button class="btn-sm" id="pasteBtn" style="margin-top:8px;">Usar este texto</button>
+        <div class="hint">Se reparte parejo a lo largo del audio. Después ajustás cada tiempo en la lista de líneas.</div>
+      </div>
+
+      <div class="panel">
+        <h2>02 · Audio</h2>
+        <div class="drop" id="dropAudio">Arrastrá o hacé click — mp3 / wav / m4a</div>
+        <input type="file" id="fileAudio" accept="audio/*">
+        <div class="hint" id="audioInfo">Sin archivo cargado.</div>
+      </div>
+
+      <div class="panel">
+        <h2>03 · Fondo</h2>
+        <div class="bgmode">
+          <button class="active" data-bg="color">Color / Pantalla verde</button>
+          <button data-bg="image">Imagen</button>
+          <button data-bg="video">Video propio</button>
+          <button data-bg="gradient">Degradé</button>
+        </div>
+
+        <div id="bgColorPanel">
+          <label class="field">Color de fondo</label>
+          <div class="row">
+            <input type="color" id="bgColor" value="#00FF00">
+                      </div>
+          <div class="hint">Verde puro (#00FF00) para chroma key en tu editor. Cambiá el color si preferís otro fondo sólido.</div>
+        </div>
+
+        <div id="bgGradientPanel" style="display:none;">
+          <label class="field">De</label>
+          <input type="color" id="gradA" value="#2C2436">
+          <label class="field">A</label>
+          <input type="color" id="gradB" value="#3EC9A7">
+        </div>
+
+        <div id="bgImagePanel" style="display:none;">
+          <div class="drop" id="dropImg">Arrastrá o hacé click — imagen de fondo</div>
+          <input type="file" id="fileImg" accept="image/*">
+        </div>
+
+        <div id="bgVideoPanel" style="display:none;">
+          <div class="drop" id="dropVid">Arrastrá o hacé click — video de fondo</div>
+          <input type="file" id="fileVid" accept="video/*">
+          <div class="hint">Se recorta/loopea para llenar el cuadro elegido. Se silencia automáticamente (usa el audio del proyecto).</div>
+        </div>
+        <div id="bgFxBox">
+          <label class="field">Animación del fondo</label>
+          <select id="bgFx"><option value="none">Sin animación</option><option value="zin">Zoom lento (acercar)</option><option value="zout">Zoom lento (alejar)</option><option value="panr">Paneo hacia la derecha</option><option value="panl">Paneo hacia la izquierda</option><option value="drift">Flotar</option><option value="pulse">Latido</option></select>
+          <div class="row"><div><label class="field">Intensidad</label><input type="range" id="bgFxAmt" min="0" max="100" value="40"></div><div><label class="field">Velocidad</label><input type="range" id="bgFxSpd" min="1" max="10" value="4"></div></div>
+          <div class="hint">Las animaciones funcionan con imagen o video de fondo.</div>
+          <label class="field">Oscurecer el fondo (para que se lea la letra)</label>
+          <input type="range" id="bgDim" min="0" max="80" value="0">
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>04 · Formato y texto</h2>
+        <label class="field">Relación de aspecto</label>
+        <div class="seg" id="aspectSeg">
+          <button data-a="9:16" class="active">9:16</button>
+          <button data-a="16:9">16:9</button>
+          <button data-a="1:1">1:1</button>
+          <button data-a="4:5">4:5</button>
+        </div>
+
+        <label class="field">Tipografía</label>
+        <select id="fontSelect" style="display:none;"></select>
+        <div class="fontlist" id="fontList"></div>
+        <div class="drop" id="dropFont" style="margin-top:8px;">Subir tipografía propia (.ttf / .otf / .woff)</div>
+        <input type="file" id="fileFont" accept=".ttf,.otf,.woff,.woff2">
+
+        <label class="field">Animación de línea</label>
+        <select id="animSelect">
+          <option value="fade">Fundido</option>
+          <option value="slide" selected>Deslizar hacia arriba</option>
+          <option value="karaoke">Resaltado progresivo</option>
+          <option value="pop">Pop / escala</option>
+          <option value="none">Sin animación</option>
+        </select>
+        <details class="anim-preview" id="animPreview"><summary>Vista previa en bucle · Texto Ejemplo</summary><canvas id="animPreviewCanvas" width="480" height="180" aria-label="Vista previa de la animación Texto Ejemplo"></canvas><div class="hint" id="animPreviewName">Reproduciendo la animación seleccionada.</div></details>
+        <div class="row">
+          <div><label class="field">Salida de la línea</label>
+            <select id="outSelect"><option value="none">Sin salida</option><option value="fade">Fundido</option><option value="up">Sube y desaparece</option><option value="shrink">Se achica</option></select></div>
+          <div><label class="field">Duración de entrada</label><input type="range" id="inDur" min="10" max="150" value="50"></div>
+        </div>
+
+        <div class="row" style="margin-top:14px;">
+          <div>
+            <label class="field">Color de texto</label>
+            <input type="color" id="textColor" value="#EFE9F2">
+          </div>
+          <div>
+            <label class="field">Color de acento</label>
+            <input type="color" id="accentColor" value="#E8A33D">
+          </div>
+        </div>
+        <label class="field">Tamaño de letra</label>
+        <input type="range" id="fontSize" min="24" max="90" value="46">
+      </div>
+
+      <div class="panel">
+        <h2>05 · Estilo del texto</h2>
+        <select id="stylePreset"></select>
+        <div class="row" style="margin-top:8px;">
+          <input type="text" id="presetName" placeholder="Nombre del estilo">
+          <button class="btn-sm" id="presetSave" style="flex:none;">Guardar actual</button>
+          <button class="btn-sm" id="presetDel" style="flex:none;" disabled>Borrar</button>
+        </div>
+        <label class="field"><input type="checkbox" id="upper" style="margin-right:6px;">Todo en mayúsculas</label>
+        <label class="field">Contorno</label>
+        <div class="row"><input type="range" id="strokeW" min="0" max="14" value="0"><input type="color" id="strokeColor" value="#000000" style="flex:none;"></div>
+        <label class="field">Resplandor (glow)</label>
+        <div class="row"><input type="range" id="glowAmt" min="0" max="60" value="0"><input type="color" id="glowColor" value="#3EC9A7" style="flex:none;"></div>
+        <label class="field">Sombra: difusión</label>
+        <input type="range" id="shAmt" min="0" max="40" value="14">
+        <label class="field">Sombra: distancia</label>
+        <input type="range" id="shDist" min="0" max="20" value="0">
+      </div>
+
+      <div class="panel">
+        <h2>06 · Posición y overlays</h2>
+        <label class="field">Posición vertical del texto</label>
+        <div class="seg" id="posVSeg">
+          <button data-pv="top">Arriba</button>
+          <button data-pv="center">Centro</button>
+          <button data-pv="bottom" class="active">Abajo</button>
+          <button data-pv="custom">Libre</button>
+        </div>
+        <div id="customVWrap" style="display:none;">
+          <label class="field">Ajuste fino vertical</label>
+          <input type="range" id="posVCustom" min="5" max="95" value="74">
+        </div>
+
+        <label class="field">Alineación horizontal</label>
+        <div class="seg" id="posHSeg">
+          <button data-ph="left">Izquierda</button>
+          <button data-ph="center" class="active">Centro</button>
+          <button data-ph="right">Derecha</button>
+        </div>
+
+        <label class="field" style="margin-top:16px;">
+          <input type="checkbox" id="vignetteToggle" checked style="margin-right:6px;">
+          Sombra inferior
+        </label>
+        <label class="field">
+          <input type="checkbox" id="accentMarkToggle" checked style="margin-right:6px;">
+          Barrita inferior
+        </label>
+        <label class="field">
+          <input type="checkbox" id="textBgToggle" style="margin-right:6px;">
+          Fondo caja detrás del texto
+        </label>
+
+        <button class="btn-sm" id="wmConfigOpen" type="button">Configurar marca de agua…</button>
+        <div class="wm-legacy" hidden>
+          <label class="field"><input type="checkbox" id="watermarkToggle" style="margin-right:6px;">Marca de agua</label>
+          <div id="watermarkWrap">
+            <label class="field">Esquina</label><div class="seg" id="wmCornerSeg"><button data-c="tl">↖</button><button data-c="tr">↗</button><button data-c="bl">↙</button><button data-c="br" class="active">↘</button></div>
+            <label class="field">Opacidad</label><input type="range" id="wmOpacity" min="5" max="100" value="55">
+            <label class="field">Texto de la marca de agua</label><input type="text" id="wmText" value="LyricStudio.site" placeholder="Tu nombre o sitio">
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="panel" id="lnPanel">
+        <h2>07 · Línea seleccionada</h2>
+        <div class="hint" id="lnHint">Elegí una línea en el timeline o en la lista para darle un estilo propio.</div>
+        <div id="lnBox" style="display:none;">
+          <label class="field">Composición de palabras <span style="color:var(--gold);font:500 10px var(--mono);">🔒 PRO</span></label>
+          <select id="lnComp" hidden><option value="">Composición normal</option></select>
+          <details class="comp-picker" id="compPicker"><summary><canvas class="comp-selected-thumb" id="compSelectedThumb" width="240" height="135" aria-hidden="true"></canvas><span class="comp-selected-name" id="compSelectedName">Composición normal</span><span class="comp-picker-chevron" aria-hidden="true">⌄</span></summary><div class="comp-picker-menu"><div class="comp-gallery" id="compGallery" role="group" aria-label="Presets visuales de composición"></div></div></details>
+          <div class="hint">Organiza cada palabra y su entrada para esta línea.</div>
+          <label class="field">Animación</label><select id="lnAnim"></select><div class="hint" id="lnAnimHint" hidden>La composición ya controla cómo entra cada palabra.</div>
+          <label class="field">Tipografía</label><select id="lnFont"></select>
+          <label class="field">Tamaño de esta línea</label><input type="range" id="lnSize" min="50" max="170" value="100">
+          <label class="field">Capa (1 = arriba)</label><input type="number" id="lnLane" min="1" max="8" value="1" style="width:80px;">
+          <label class="field">Rotación (grados)</label><input type="range" id="lnRot" min="-180" max="180" value="0">
+          <div class="row" style="margin:12px 0 4px;flex-wrap:wrap;gap:6px;">
+            <button class="btn-sm" id="lnAll" style="flex:none;" title="Copia este estilo a todas las líneas">A todas</button>
+            <button class="btn-sm" id="lnNext" style="flex:none;" title="Copia este estilo a las líneas que siguen">A las siguientes</button>
+            <button class="btn-sm" id="lnCenter" style="flex:none;" title="Vuelve a la posición y rotación originales">Centrar</button>
+            <button class="btn-sm" id="lnClear" style="flex:none;" title="Vuelve al estilo general">Quitar</button>
+          </div>
+          <label class="field"><input type="checkbox" id="lnColorOn" style="margin-right:6px;">Color de texto propio</label>
+          <input type="color" id="lnColor" value="#ffffff">
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE -->
+    <div>
+      <div class="stage-outer">
+        <canvas id="stage" width="720" height="1280"></canvas>
+
+        <div class="timecode">
+          <span class="badge" id="tcBadge">00:00.00</span>
+          <span class="idx" id="tcIdx">línea — / —</span>
+        </div>
+
+        <div class="transport">
+          <button id="playBtn">▶</button>
+          <input type="range" id="seek" min="0" max="100" value="0" step="0.1">
+          <span class="t" id="tDisplay">00:00 / 00:00</span>
+          <select id="rate" class="btn-sm" title="Velocidad de vista previa"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option></select>
+        </div>
+
+        <div class="tlwrap">
+          <div class="tlbar">
+            <button class="btn-sm" id="tapBtn" title="Reproduce y marcá el comienzo de cada línea con Enter">● Sincronizar</button>
+            <button class="btn-sm" id="tapMark" style="display:none;">Marcar (Enter)</button>
+            <label class="tapw" title="Marcá cada palabra en vez de cada línea"><input type="checkbox" id="tapWords"> por palabra</label>
+            <span class="tapinfo" id="tapInfo"></span>
+            <span class="grow"></span>
+            <button class="btn-sm" id="splitBtn" title="Divide la línea en la posición del cursor">Dividir</button>
+            <button class="btn-sm" id="mergeBtn" title="Une la línea elegida con la siguiente">Unir</button>
+            <button class="btn-sm" id="tlOut" aria-label="Alejar">−</button>
+            <button class="btn-sm" id="tlFit">Ajustar</button>
+            <button class="btn-sm" id="tlIn" aria-label="Acercar">+</button>
+          </div>
+          <canvas id="tl" height="150"></canvas>
+          <div class="hint">Arrastrá un bloque para moverlo o sus bordes para recortarlo. Rueda: desplazar · Ctrl + rueda: zoom · Espacio: play/pausa.</div>
+        </div>
+
+        <div class="export-bar">
+          <button class="btn-primary" id="exportBtn">Exportar video</button>
+          <button class="btn-primary" id="stopBtn" style="display:none; background:var(--danger); color:#fff;">■ Detener</button>
+          <div class="progress-line"><i id="progFill"></i></div>
+          <span class="export-status" id="expStatus">Cargá letra + audio para exportar</span>
+        </div>
+
+        <div class="editor" id="lyricEditor">
+          <div class="editor-head"><span>Letra y tiempos</span><span class="editor-tools"><button class="btn-sm" id="addLineBtn">+ Línea</button><button class="btn-sm" id="lrcBtn">Bajar .lrc</button></span></div>
+          <div class="lrows" id="lyricsLog"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="export-modal" id="exportModal" hidden role="dialog" aria-modal="true" aria-labelledby="exportTitle">
+  <div class="export-box">
+    <h2 id="exportTitle">Configurar exportación</h2>
+    <p>Elegí la fluidez y resolución. El render se procesa en tu equipo; valores altos pueden tardar más o no ser compatibles con el navegador.</p>
+    <div class="export-options">
+      <label>Formato<select id="expFormat"><option value="mp4" selected>MP4 · render por cuadros</option><option value="webm">WebM · captura del navegador</option></select></label>
+      <label>Fotogramas por segundo<select id="expFps"><option>30</option><option>60</option><option>120</option><option>240</option></select></label>
+      <label>Resolución<select id="expRes"><option value="480">480p</option><option value="720" selected>720p</option><option value="1080">1080p</option></select></label>
+    </div>
+    <div class="export-dims" id="expDims"></div>
+    <div class="export-warning" role="note"><span aria-hidden="true">⚠</span><span><b>Exportación exigente:</b> las resoluciones y FPS altos pueden consumir muchos recursos. La velocidad y estabilidad dependen del equipo; si se traba o falla, probá bajar los FPS o la resolución.</span></div>
+    <div class="export-actions"><button class="btn-sm" id="exportCancel">Cancelar</button><button class="btn-primary" id="exportStart">Iniciar exportación</button></div>
+  </div>
+</div>
+
+<div class="export-modal" id="wmModal" hidden role="dialog" aria-modal="true" aria-labelledby="wmModalTitle">
+  <div class="export-box wm-box">
+    <h2 id="wmModalTitle">Marca de agua</h2>
+    <p>Configurá una firma de texto o un recurso visual que se renderiza sobre el video.</p>
+    <label class="field wm-enable"><input id="wmModalEnabled" type="checkbox"> Activar marca de agua</label>
+    <div class="wm-types"><button type="button" data-wm-type="text" class="active">Texto</button><button type="button" data-wm-type="image">Imagen</button><button type="button" data-wm-type="video">Video en bucle</button></div>
+    <div id="wmTextFields"><label class="field">Texto</label><input id="wmModalText" type="text" value="LyricStudio.site" maxlength="120" placeholder="LyricStudio.site"></div>
+    <div id="wmAssetFields" hidden><input id="wmImageFile" type="file" accept="image/*" hidden><input id="wmVideoFile" type="file" accept="video/*" hidden><div class="wm-file-row"><button class="btn-sm" id="wmChooseAsset" type="button">Elegir archivo…</button><span id="wmAssetName">Sin archivo seleccionado</span><button class="btn-sm" id="wmRemoveAsset" type="button" hidden>Quitar</button></div><p class="hint" id="wmAssetHint">Se incluye en el archivo del proyecto (.lyr).</p></div>
+    <label class="field">Esquina</label><div class="seg wm-corners" id="wmModalCorners"><button type="button" data-c="tl">↖</button><button type="button" data-c="tr">↗</button><button type="button" data-c="bl">↙</button><button type="button" data-c="br" class="active">↘</button></div>
+    <label class="field">Opacidad <span id="wmOpacityLabel">55%</span></label><input id="wmModalOpacity" type="range" min="5" max="100" value="55">
+    <label class="field">Tamaño <span id="wmSizeLabel">12% del ancho</span></label><input id="wmModalSize" type="range" min="1" max="80" step="0.1" value="2.2">
+    <div class="export-actions"><button class="btn-sm" id="wmModalCancel" type="button">Cerrar</button><button class="btn-primary" id="wmModalDone" type="button">Listo</button></div>
+  </div>
+</div>
+
+<script src="mp4-muxer.js"></script>
+<script src="supabase-js.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
