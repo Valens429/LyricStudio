@@ -88,6 +88,9 @@ h1 span{color:var(--gold)}
 .tier.hot{border-color:var(--gold);box-shadow:0 0 0 1px rgba(232,163,61,.25),0 18px 40px rgba(232,163,61,.07)}
 .tier h3{margin:16px 0 2px;font:700 1.35rem var(--disp);display:flex;align-items:center;gap:10px}
 .tier p{margin:0;color:var(--dim);font-size:14px}
+.tier-highlights{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tier-highlights span{display:inline-flex;align-items:center;min-height:23px;padding:3px 8px;border:1px solid var(--line);border-radius:999px;background:#ffffff05;color:var(--dim);font:500 9px var(--mono);letter-spacing:.02em}
+.tier.hot .tier-highlights span{border-color:#e8a33d44;color:#f0cc91;background:#e8a33d09}
 .badge{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 9px;border:1px solid var(--line);color:var(--dim)}
 .hot .badge{background:var(--gold);border-color:var(--gold);color:#1B1620;font-weight:700}
 
@@ -174,7 +177,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);display
       <div class="tiers" id="tiers"></div>
 
       <div class="scroll"><table id="cmp"></table></div>
-      <p class="note">Minimal no lleva marca de agua porque es una app muy simple. Pro se paga una sola vez (US$ 15), sin suscripción. Las características de cada versión son preliminares y pueden cambiar antes del lanzamiento.</p>
+      <p class="note">Minimal no lleva marca de agua. En Free es obligatoria; PRO permite personalizarla o quitarla. PRO se paga una sola vez (US$ 15), sin suscripción. *En web se pueden seleccionar MP4 hasta 1080p y 240 FPS, pero la compatibilidad y estabilidad dependen del navegador y del equipo. 4K/240 FPS está previsto para la versión de PC, no para la web. Las características son preliminares y pueden cambiar.</p>
     </section>
   </main>
 
@@ -184,19 +187,30 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);display
 <script>
 /* ===== Datos (editá acá para cambiar la comparativa) ===== */
 const TIERS=[
-  {n:'Minimal',t:'Lo esencial, sin vueltas.',b:'Gratis',lines:4,tl:0},
-  {n:'Free',t:'Más opciones, en navegador y escritorio.',b:'Gratis',lines:6,tl:1},
-  {n:'Pro',t:'Todo el estudio, sin límites. Un único pago, sin suscripción.',b:'US$ 15 · pago único',lines:9,tl:3,hot:true}
+  {n:'Minimal',t:'Lo esencial, sin vueltas.',b:'Gratis',lines:4,tl:0,highlights:['Texto y fondo','Sin marca de agua']},
+  {n:'Free',t:'Crea y sincroniza tus videos en el navegador.',b:'Gratis',lines:6,tl:1,highlights:['Timeline básico','Animaciones esenciales','Marca obligatoria']},
+  {n:'Pro',t:'Herramientas avanzadas para diseñar cada verso.',b:'US$ 15 · pago único',lines:9,tl:3,hot:true,highlights:['Presets visuales','Keyframes','Doble capa','Modo Estudio','Marca personalizable','MP4']}
 ];
 const ROWS=[
   {k:'Precio',v:['Gratis','Gratis','<span class="price">US$ 15</span> <span class="dim">pago único</span>']},
-  {k:'Dónde corre',v:['Navegador','Navegador + escritorio','Navegador + escritorio']},
+  {k:'Dónde corre',v:['Navegador','Navegador','Navegador · versión PC en desarrollo']},
   {k:'Tipografías',n:[4,10,30],s:['4','~10','30+']},
-  {k:'Animaciones',n:[5,8,17],s:['5','~8','17']},
+  {k:'Subir tipografías propias',v:['—','—','Sí · TTF, OTF y WOFF']},
+  {k:'Animaciones',v:['Básicas','Más variedad','Biblioteca PRO + presets']},
+  {k:'Composición visual por palabra',v:['—','—','Presets visuales']},
+  {k:'Presets de estilo reutilizables',v:['—','—','Guardar y cambiar presets']},
   {k:'Sincronizar y editar',l:[0,2,5],s:['No','Básico','Completo']},
-  {k:'Formato de exportación',v:['WebM','720p60 MP4','4k60 Varios formatos']},
-  {k:'Marca de agua',v:['No','Sí','Opcional']},
-  {k:'Proyectos',v:['—','En tu equipo','Autoguardado']},
+  {k:'Estilo independiente por verso',v:['—','—','Sí']},
+  {k:'Keyframes',v:['—','Vista previa bloqueada','Editor visual']},
+  {k:'Doble capa de versos',v:['—','—','Sí']},
+  {k:'Modo Estudio · doble vista',v:['—','—','Sí']},
+  {k:'Marca de agua',v:['No','Obligatoria','Personalizable u opcional']},
+  {k:'Captura de cuadro PNG',v:['—','—','Sí']},
+  {k:'Controles personalizables',v:['—','—','Sí']},
+  {k:'Formato de exportación web',v:['WebM','WebM · navegador','MP4 · render por cuadros']},
+  {k:'Resolución y FPS web',v:['Automáticos','No configurables en WebM','MP4 seleccionable · hasta 1080p / 240 FPS*']},
+  {k:'Exportación 4K/240 FPS',v:['—','—','Versión de PC · prevista']},
+  {k:'Proyectos',v:['—','Autoguardado local · .lyr','Autoguardado local · .lyr']},
   {k:'Imágenes y textos de stock',v:['—','—','<span class="soon">Próximamente</span>']}
 ];
 
@@ -209,7 +223,7 @@ function mock(t){
     <div class="ph"><b style="width:70%"></b><b style="width:50%"></b><b class="g"></b></div>${t.tl?`<div class="tl">${tl}</div>`:''}</div>`;
 }
 document.getElementById('tiers').innerHTML=TIERS.map(t=>
-  `<article class="tier${t.hot?' hot':''}">${mock(t)}<h3>${t.n}<span class="badge">${t.b}</span></h3><p>${t.t}</p></article>`).join('');
+  `<article class="tier${t.hot?' hot':''}">${mock(t)}<h3>${t.n}<span class="badge">${t.b}</span></h3><p>${t.t}</p><div class="tier-highlights" aria-label="Funciones destacadas">${t.highlights.map(x=>`<span>${x}</span>`).join('')}</div></article>`).join('');
 
 /* ===== Tabla comparativa ===== */
 const cell=(r,i)=>{
