@@ -1,0 +1,14 @@
+{
+  "name": "lyric-studio-desktop",
+  "version": "0.1.0",
+  "description": "Lyric Studio · versión de escritorio",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "electron": "^45.3.0"
+  }
+}

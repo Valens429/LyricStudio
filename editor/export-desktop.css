@@ -1,0 +1,17 @@
+/* Lyric Studio · Exportación de escritorio (modal Básico / Avanzado) */
+.dx-box{width:min(680px,100%);max-height:calc(100vh - 40px);overflow:auto}
+.dx-box h3{margin:18px 0 10px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted,var(--k-aaaaaa))}
+.dx-tabs{display:flex;gap:4px;margin:0 0 16px;padding:4px;border-radius:12px;background:#ffffff0c}
+.dx-tabs button{flex:1;padding:9px 12px;border:0;border-radius:9px;background:transparent;color:var(--muted,var(--k-aaaaaa));font:inherit;font-weight:600;cursor:pointer}
+.dx-tabs button[aria-selected="true"]{background:#ffffff1c;color:var(--text,#fff)}
+.dx-tabs button:focus-visible{outline:2px solid var(--gold,#e8a33d);outline-offset:1px}
+.dx-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dx-grid>label{display:grid;gap:7px;font-size:13px;color:var(--muted,var(--k-aaaaaa));align-content:start}
+.dx-panel[data-panel="basic"]>label:first-child{grid-column:1/-1}
+.dx-grid select,.dx-grid input[type=number]{width:100%;min-width:0;padding:11px;border-radius:10px;background:var(--k-211a28,var(--k-111111));color:#fff;border:1px solid var(--k-51445f,#ffffff30);font:inherit}
+.dx-grid [hidden],.dx-checks [hidden],.dx-box h3[hidden]{display:none!important}
+.dx-checks{display:grid;gap:8px;margin-top:14px}
+.dx-checks label{display:flex;gap:9px;align-items:center;font-size:13px;color:var(--muted,var(--k-aaaaaa))}
+.dx-compat{margin-top:10px;font-size:12px;line-height:1.5;color:var(--muted,var(--k-aaaaaa))}
+#dxStart:disabled{opacity:.5;cursor:not-allowed}
+@media (max-width:520px){.dx-grid{grid-template-columns:1fr}}

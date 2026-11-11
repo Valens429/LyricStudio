@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="ambar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Descargas — Lyric Studio para escritorio</title>
+<meta name="description" content="Descarga Lyric Studio para escritorio: exportación en 4K, 8K y hasta 240 fps, WorkStation multi-monitor y aceleración por hardware. Disponible para Windows. Linux y macOS, próximamente.">
+<link rel="canonical" href="https://lyricstudio.site/downloads/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lyric Studio">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Lyric Studio para escritorio — Descargas">
+<meta property="og:description" content="Exportación exigente, WorkStation multi-monitor y aceleración por hardware. Disponible para Windows; Linux y macOS próximamente.">
+<meta property="og:url" content="https://lyricstudio.site/downloads/">
+<meta property="og:image" content="https://lyricstudio.site/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#1B1620">
+<link rel="icon" type="image/svg+xml" href="../icon.svg">
+<link rel="apple-touch-icon" href="../icon.svg">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('lyricStudio.landingTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="../landing.css">
+<style>
+/* ---------- Página de descargas ---------- */
+.dl-hero{position:relative;padding:150px 0 40px;overflow:clip;isolation:isolate;text-align:center}
+.dl-hero .hero-bg .spot{bottom:-30%;height:80%}
+.dl-hero h1{font-size:clamp(2.1rem,4.6vw,3.6rem);margin:18px 0 16px;text-wrap:balance}
+.dl-hero .lead{max-width:680px}
+.dl-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:26px;color:var(--ink-dim);font-size:14.5px}
+.dl-meta li{display:flex;align-items:center;gap:8px}
+.dl-meta svg{width:16px;height:16px;color:var(--teal)}
+
+.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:34px 0 20px;align-items:stretch}
+.dl-card{position:relative;display:flex;flex-direction:column;gap:18px;padding:30px 26px 26px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--panel-2) 78%,transparent),color-mix(in srgb,var(--panel) 78%,transparent));box-shadow:0 40px 80px -50px rgba(0,0,0,.85);overflow:hidden;isolation:isolate;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.dl-card::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;background:radial-gradient(120% 70% at 50% -10%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 60%);opacity:.0;transition:opacity .4s}
+.dl-os{display:grid;place-items:center;width:64px;height:64px;border-radius:19px;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+.dl-os svg{width:32px;height:32px}
+.dl-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dl-card h2{font-size:1.65rem}
+.dl-card .sub{color:var(--ink-dim);font-size:15px;margin-top:6px}
+.dl-spec{display:grid;gap:9px;margin:2px 0 0;font-size:14.5px;color:var(--ink-dim)}
+.dl-spec li{display:flex;gap:10px;align-items:flex-start}
+.dl-spec svg{width:16px;height:16px;flex:none;margin-top:4px;color:var(--teal)}
+.dl-foot{margin-top:auto;display:grid;gap:10px}
+.dl-note{font-size:12.5px;color:var(--ink-dim);text-align:center}
+
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font:600 11.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;border:1px solid var(--line);color:var(--ink-dim);background:color-mix(in srgb,var(--panel) 70%,transparent)}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:ping 2.2s infinite}
+.badge.live{color:var(--teal);border-color:color-mix(in srgb,var(--teal) 45%,transparent);background:color-mix(in srgb,var(--teal) 10%,transparent)}
+.badge.soon{color:var(--accent-hi);border-color:color-mix(in srgb,var(--accent) 50%,transparent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.badge.soon .dot{background:var(--accent);box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent);animation:pingA 2.2s infinite}
+@keyframes pingA{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.badge.you{color:var(--on-accent);background:linear-gradient(135deg,var(--accent-hi),var(--accent));border-color:transparent}
+
+/* tarjeta activa (Windows) */
+.dl-card.live{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));box-shadow:0 40px 90px -40px color-mix(in srgb,var(--accent) 45%,transparent),0 0 0 1px color-mix(in srgb,var(--accent) 25%,transparent)}
+.dl-card.live::before{opacity:1}
+.dl-card.live:hover{transform:translateY(-6px)}
+.dl-card.live .dl-os{background:linear-gradient(135deg,var(--accent-hi),var(--accent));color:var(--on-accent);border-color:transparent;box-shadow:0 14px 34px -12px color-mix(in srgb,var(--accent) 75%,transparent)}
+
+/* tarjetas "próximamente" */
+.dl-card.soon{border-style:dashed;background:linear-gradient(160deg,color-mix(in srgb,var(--panel) 70%,transparent),color-mix(in srgb,var(--bg-deep) 80%,transparent))}
+.dl-card.soon .dl-os{background:color-mix(in srgb,var(--panel-2) 80%,transparent);color:var(--ink-dim);border-color:var(--line)}
+.dl-card.soon h2,.dl-card.soon .dl-spec{opacity:.72}
+.dl-card.soon::after{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--line) 35%,transparent) 14px 15px);opacity:.35;pointer-events:none}
+.dl-ribbon{position:absolute;top:24px;right:22px;display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;font:700 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--on-accent);background:linear-gradient(100deg,var(--accent-hi),var(--accent) 50%,var(--accent-hi));background-size:220% 100%;animation:shimmer 5s linear infinite;box-shadow:0 8px 20px -8px color-mix(in srgb,var(--accent) 70%,transparent)}
+.dl-ribbon::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.7}
+/* brillo del botón de descarga: contenido dentro de su propia caja (sin recortes) */
+.dl-card .btn-primary{width:100%;border-radius:14px;overflow:hidden;isolation:isolate}
+.dl-card .btn-primary::after{display:none}
+.dl-card .btn-primary::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.32) 50%,transparent 65%);background-size:250% 100%;background-position:150% 0;transition:background-position .8s var(--ease)}
+.dl-card .btn-primary:hover::before{background-position:-50% 0}
+.dl-card .btn-soon{width:100%;border-radius:14px}
+.btn[disabled],.btn.is-disabled{cursor:not-allowed;opacity:.85;transform:none!important;pointer-events:none}
+.btn-soon{background:color-mix(in srgb,var(--panel-2) 80%,transparent);border:1px dashed color-mix(in srgb,var(--accent) 55%,var(--line));color:var(--accent-hi)}
+.btn-soon svg{animation:tick 4s ease-in-out infinite}
+@keyframes tick{0%,100%{transform:rotate(0)}50%{transform:rotate(14deg)}}
+
+/* qué incluye */
+.dl-feat{padding:90px 0 40px}
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.fcard{padding:24px 22px;border-radius:20px;border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 72%,transparent);transition:transform .3s var(--ease),border-color .3s}
+.fcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.fcard .ic{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent);margin-bottom:16px}
+.fcard .ic svg{width:22px;height:22px}
+.fcard h3{font-size:1.15rem;margin-bottom:8px}
+.fcard p{color:var(--ink-dim);font-size:15px;line-height:1.55}
+.pro-note{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;margin:34px auto 0;max-width:760px;padding:16px 22px;border-radius:16px;border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 60%,transparent);color:var(--ink-dim);font-size:15px;text-align:center}
+.pro-note b{color:var(--ink)}
+
+/* ayuda */
+.dl-help{padding:60px 0 100px}
+.help-box{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:30px 34px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(135deg,color-mix(in srgb,var(--panel-2) 80%,transparent),color-mix(in srgb,var(--panel) 80%,transparent))}
+.help-box h3{font-size:1.4rem;margin-bottom:6px}
+.help-box p{color:var(--ink-dim);max-width:520px}
+
+/* aparición al hacer scroll (solo con JS) */
+html.js .dl-rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+html.js .dl-rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .dl-grid{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+  .fgrid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .dl-hero{padding-top:124px}
+  .fgrid{grid-template-columns:1fr}
+  .help-box{padding:24px 22px}
+  .dl-card{padding:26px 20px 22px}
+}
+@media (prefers-reduced-motion:reduce){
+  html.js .dl-rv{opacity:1;transform:none;transition:none}
+  .dl-ribbon,.btn-soon svg,.badge .dot{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../"><img src="../icon.svg" alt="" width="34" height="34">Lyric Studio</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="../#funciones">Funciones</a><a href="../#planes">Planes</a><a href="../#faq">Preguntas</a><a href="#descargas" aria-current="page">Descargas</a>
+    </nav>
+    <a class="btn btn-primary" href="../editor/">Abrir el editor</a>
+    <button class="burger" id="burger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="dl-hero">
+  <div class="hero-bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid-fx"></div><div class="spot"></div></div>
+  <div class="container">
+    <span class="chip fade-up" style="--d:.1s"><span class="dot"></span>Versión de escritorio</span>
+    <h1><span class="w" style="--i:0">Lyric</span> <span class="w" style="--i:1">Studio</span> <span class="w grad" style="--i:2">sin</span> <span class="w grad" style="--i:3">límites</span></h1>
+    <p class="lead fade-up" style="--d:.55s">Exporta en 4K, 8K y hasta 240 fps, trabaja con varios monitores en modo WorkStation y aprovecha la aceleración por hardware de tu equipo. Todo en una app nativa.</p>
+    <ul class="dl-meta fade-up" style="--d:.75s">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Instalación en un clic</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tus proyectos .lyr funcionan igual</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Misma cuenta que en la web</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DESCARGAS -->
+<section id="descargas">
+  <div class="container">
+    <div class="dl-grid">
+
+      <!-- WINDOWS -->
+      <article class="dl-card live dl-rv" data-os="windows" style="--d:.05s" aria-labelledby="h-win">
+        <div class="dl-top">
+          <div class="dl-os" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.6 10.4 4.6v6.7H3zM11.6 4.4 21 3v8.3h-9.4zM3 12.7h7.4v6.7L3 18.4zM11.6 12.7H21V21l-9.4-1.3z"/></svg></div>
+          <span class="badge live"><span class="dot"></span>Disponible</span>
+        </div>
+        <div>
+          <h2 id="h-win">Windows</h2>
+          <p class="sub">Windows 10 u 11 · 64 bits</p>
+        </div>
+        <ul class="dl-spec">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Exportación hasta 8K y 240 fps</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>MP4, MOV, MKV, WebM y GIF</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>WorkStation multi-monitor</li>
+        </ul>
+        <div class="dl-foot">
+          <a class="btn btn-primary btn-lg" id="dlWin" href="LyricStudio-Setup.exe" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>Descargar para Windows</a>
+          <p class="dl-note">Versión <span id="dlVer">0.1.0</span> · instalador .exe</p>
+        </div>
+      </article>
+
+      <!-- LINUX -->
+      <article class="dl-card soon dl-rv" data-os="linux" style="--d:.15s" aria-labelledby="h-lin">
+        <span class="dl-ribbon" aria-hidden="true">Próximamente</span>
+        <div class="dl-top">
+          <div class="dl-os" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7.5 10l3 2.5-3 2.5M13 15h3.5"/></svg></div>
+        </div>
+        <div>
+          <h2 id="h-lin">Linux</h2>
+          <p class="sub">AppImage y .deb</p>
+        </div>
+        <ul class="dl-spec">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Mismas funciones que en Windows</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Aceleración por hardware</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Se actualiza sola</li>
+        </ul>
+        <div class="dl-foot">
+          <span class="btn btn-lg btn-soon is-disabled" role="button" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Próximamente</span>
+          <p class="dl-note">Estamos preparando esta versión.</p>
+        </div>
+      </article>
+
+      <!-- MACOS -->
+      <article class="dl-card soon dl-rv" data-os="macos" style="--d:.25s" aria-labelledby="h-mac">
+        <span class="dl-ribbon" aria-hidden="true">Próximamente</span>
+        <div class="dl-top">
+          <div class="dl-os" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3z"/></svg></div>
+        </div>
+        <div>
+          <h2 id="h-mac">macOS</h2>
+          <p class="sub">Apple Silicon e Intel</p>
+        </div>
+        <ul class="dl-spec">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Mismas funciones que en Windows</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Codificación por hardware</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Se actualiza sola</li>
+        </ul>
+        <div class="dl-foot">
+          <span class="btn btn-lg btn-soon is-disabled" role="button" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Próximamente</span>
+          <p class="dl-note">Estamos preparando esta versión.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ INCLUYE -->
+<section class="dl-feat" id="incluye">
+  <div class="container">
+    <div class="sec-head dl-rv">
+      <span class="eyebrow">Por qué escritorio</span>
+      <h2>Más potencia, mismo Lyric Studio</h2>
+      <p>La app de escritorio usa el motor de tu equipo para exportar más rápido y en formatos que el navegador no puede ofrecer.</p>
+    </div>
+    <div class="fgrid">
+      <div class="fcard dl-rv" style="--d:.05s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Exportación exigente</h3><p>Resoluciones desde HD hasta 8K y tasas de hasta 240 fps, con control total de calidad.</p></div>
+      <div class="fcard dl-rv" style="--d:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Aceleración por hardware</h3><p>Aprovecha tu GPU para codificar mucho más rápido cuando tu equipo es compatible.</p></div>
+      <div class="fcard dl-rv" style="--d:.19s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="10" height="8" rx="1.5"/><rect x="12" y="9" width="10" height="8" rx="1.5"/></svg></div><h3>Modo WorkStation</h3><p>Edita en una pantalla y manda la salida limpia a pantalla completa en otro monitor.</p></div>
+      <div class="fcard dl-rv" style="--d:.26s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>Más formatos</h3><p>MP4, MOV, MKV, WebM y GIF, con opciones avanzadas de códec para cada uno.</p></div>
+    </div>
+    <p class="pro-note dl-rv"><span><b>Lyric Studio PRO</b> desbloquea las funciones avanzadas de exportación y WorkStation en la app de escritorio.</span><a class="btn btn-ghost" href="../#planes">Ver planes</a></p>
+  </div>
+</section>
+
+<!-- AYUDA -->
+<section class="dl-help">
+  <div class="container">
+    <div class="help-box dl-rv">
+      <div>
+        <h3>¿Problemas para instalar?</h3>
+        <p>Escríbenos y te ayudamos. Mientras tanto, el editor web sigue disponible en cualquier navegador.</p>
+      </div>
+      <div class="cta-row" style="margin:0">
+        <a class="btn btn-ghost" href="mailto:support@lyricstudio.site">Contactar soporte</a>
+        <a class="btn btn-primary" href="../editor/">Abrir el editor web</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="container">
+  <div class="foot-grid">
+    <div><a class="brand" href="../"><img src="../icon.svg" alt="" width="34" height="34">Lyric Studio</a><p>Crea videos de letras sincronizadas desde el navegador.</p></div>
+    <div><h4>Producto</h4><ul><li><a href="../#funciones">Funciones</a></li><li><a href="../#estilos">Estilos</a></li><li><a href="../#planes">Planes</a></li></ul></div>
+    <div><h4>Recursos</h4><ul><li><a href="./">Descargas</a></li><li><a href="../#faq">Preguntas</a></li><li><a href="mailto:support@lyricstudio.site">Soporte</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="../terms.html">Términos y condiciones</a></li><li><a href="../privacy.html">Política de privacidad</a></li></ul></div>
+  </div>
+  <div class="copy"><span>© 2026 Lyric Studio</span><span>support@lyricstudio.site</span></div>
+</div></footer>
+
+<script>
+(function(){
+  'use strict';
+  // ====== Configuración: enlace del instalador de Windows ======
+  // Cambia solo estas líneas cuando subas el instalador real.
+  var DOWNLOADS={ windows:{ url:'LyricStudio-Setup.exe', version:'0.1.0' } };
+
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var win=$('#dlWin'); if(win){ win.setAttribute('href',DOWNLOADS.windows.url); var v=$('#dlVer'); if(v) v.textContent=DOWNLOADS.windows.version; }
+
+  // cabecera: fondo al hacer scroll + menú móvil
+  var nav=$('#nav'),burger=$('#burger');
+  var onScroll=function(){nav.classList.toggle('scrolled',scrollY>12)};onScroll();addEventListener('scroll',onScroll,{passive:true});
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',String(o));});
+  $$('.nav-links a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
+
+  // marca "Tu sistema" en la tarjeta que corresponde
+  var p=((navigator.userAgentData&&navigator.userAgentData.platform)||navigator.platform||navigator.userAgent||'').toLowerCase(),os=null;
+  if(/win/.test(p))os='windows';else if(/mac|iphone|ipad/.test(p))os='macos';else if(/linux|x11|cros/.test(p)&&!/android/.test(navigator.userAgent.toLowerCase()))os='linux';
+  var card=os&&$('.dl-card[data-os="'+os+'"]');
+  if(card){var box=$('h2',card).parentNode,b=document.createElement('span');b.className='badge you';b.textContent='Tu sistema';b.style.marginTop='12px';box.appendChild(b);}
+
+  // aparición suave al hacer scroll
+  var items=$$('.dl-rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+    items.forEach(function(el){io.observe(el)});
+  }else items.forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</body>
+</html>
