@@ -33,6 +33,8 @@
 .mode-copy li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px}
 .mode-copy li svg{width:18px;height:18px;flex:none;margin-top:4px;color:var(--accent)}
 .mode-vis{position:relative;padding:22px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(145deg,color-mix(in srgb,var(--panel-2) 70%,transparent),color-mix(in srgb,var(--panel) 70%,transparent));box-shadow:0 50px 100px -50px rgba(0,0,0,.8),0 0 90px -40px color-mix(in srgb,var(--accent) 45%,transparent)}
+.mode-note{margin-top:22px;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;font-size:14px;color:var(--ink-dim);background:color-mix(in srgb,var(--panel) 70%,transparent)}
+.mode-note b{color:var(--ink);font-weight:600}
 .mv-tag{display:inline-block;margin-bottom:14px;font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 
 /* monitores */
@@ -217,12 +219,16 @@
   <div class="feat-grid">
     <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Sincronización en pantalla completa</h3><p>Marca cada línea con la barra espaciadora mientras suena la canción. Baja la velocidad a 0.5× para mayor precisión.</p></article>
     <article class="card reveal" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-6 4 12 3-9 2 3h4"/></svg></div><h3>Timeline con onda</h3><p>Arrastra bloques, recorta bordes, divide y une líneas. Los bordes se imantan al cursor y a las líneas vecinas.</p></article>
-    <article class="card reveal" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V4h14v3M12 4v16M9 20h6"/></svg></div><h3>30 tipografías</h3><p>Desde fuentes de impacto hasta manuscritas. Con PRO también subes la tuya y viaja dentro del proyecto.</p></article>
-    <article class="card reveal" style="--d:.24s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></div><h3>17 animaciones</h3><p>Por línea, por palabra o por letra: fundido, rebote, máquina de escribir, karaoke con resaltado progresivo y más.</p></article>
-    <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg></div><h3>Fondos animados</h3><p>Color, degradado, imagen o tu propio video en bucle, con zoom, desplazamiento o latido y control de oscurecido.</p></article>
+    <article class="card reveal" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V4h14v3M12 4v16M9 20h6"/></svg></div><h3>45 tipografías</h3><p>De impacto, elegantes, retro o manuscritas, todas libres para uso comercial. Con PRO también subes la tuya y viaja dentro del proyecto.</p></article>
+    <article class="card reveal" style="--d:.24s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></div><h3>Entrada y salida</h3><p>16 animaciones de entrada y 9 de salida, por línea, por palabra o por letra: fundido, rebote, máquina de escribir, giro, zoom y más.</p></article>
+    <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg></div><h3>Fondos animados</h3><p>Color, degradado, imagen o video en bucle, con control de oscurecido. Si usas una imagen, además la animas con zoom, desplazamiento o latido.</p></article>
     <article class="card reveal" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></div><h3>Cuatro formatos</h3><p>9:16, 1:1, 4:5 y 16:9. Un mismo proyecto sirve para cada red sin rehacerlo.</p></article>
     <article class="card reveal" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><h3>Movimiento con keyframes</h3><p>Anima posición, escala, giro y opacidad de cada línea, con movimientos listos o a tu medida.</p></article>
-    <article class="card reveal" style="--d:.24s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5 14v5h14v-5"/></svg></div><h3>Exportación MP4</h3><p>Render cuadro por cuadro a 480p, 720p o 1080p y hasta 240 FPS según tu equipo. En Free exportas en WebM.</p></article>
+    <article class="card reveal" style="--d:.24s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5 14v5h14v-5"/></svg></div><h3>Exportación MP4</h3><p>Render cuadro por cuadro a 480p, 720p o 1080p, con 30, 60, 120 o 240 FPS según tu equipo. Si la combinación es muy exigente, el editor te avisa. En Free exportas en WebM y el navegador decide la calidad.</p></article>
+    <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg></div><h3>Estilo propio por línea</h3><p>Dale a una línea su propio color, contorno, resplandor y sombra sin tocar el resto. Con un botón vuelves a los estilos generales.</p></article>
+    <article class="card reveal" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="16" r="2"/></svg></div><h3>Karaoke por palabra</h3><p>El resaltado avanza palabra a palabra. Si la letra no está marcada por palabra, el editor te lo avisa una sola vez para que quede preciso.</p></article>
+    <article class="card reveal" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></div><h3>Avisos claros, sin fallos silenciosos</h3><p>Si falta el audio o un archivo está dañado, aparece una notificación roja que te dice qué pasó. Nada se rompe en silencio.</p></article>
+    <article class="card reveal" style="--d:.24s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg></div><h3>Atajos a tu medida</h3><p>Cambia las teclas de reproducir, marcar y deshacer. Y si te estorba el panel de atajos, lo cierras con una X y se recuerda.</p></article>
   </div>
 </div></section>
 
@@ -285,9 +291,10 @@
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Monitor 1: editor completo con timeline, listas y paneles</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Monitor 2: vista previa grande con la línea actual, el tiempo y el estado</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Asigna cada ventana a su pantalla desde “Configurar monitores”</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Asigna cada ventana a su pantalla desde “Configurar monitores”: cada una se abre en pantalla completa en su monitor</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Ideal para revisar el resultado mientras ajustas tiempos</li>
       </ul>
+      <p class="mode-note">WorkStation vive en la <b>app de escritorio</b> de Lyric Studio, porque necesita controlar tus monitores y el navegador no lo permite de forma fiable. La app detecta tu licencia: con PRO se activa y en Free aparece bloqueada.</p>
     </div>
     <div class="mode-vis">
       <span class="mv-tag">Doble pantalla</span>
@@ -353,8 +360,8 @@
 
 <!-- CIFRAS -->
 <section class="stats"><div class="container"><div class="stat-row">
-  <div class="stat reveal"><b data-n="30">0</b><span>tipografías</span></div>
-  <div class="stat reveal" style="--d:.06s"><b data-n="17">0</b><span>animaciones</span></div>
+  <div class="stat reveal"><b data-n="45">0</b><span>tipografías</span></div>
+  <div class="stat reveal" style="--d:.06s"><b data-n="25">0</b><span>animaciones</span></div>
   <div class="stat reveal" style="--d:.12s"><b data-n="15">0</b><span>estilos listos</span></div>
   <div class="stat reveal" style="--d:.18s"><b data-n="5">0</b><span>temas de color</span></div>
   <div class="stat reveal" style="--d:.24s"><b data-n="4">0</b><span>formatos de video</span></div>
@@ -365,7 +372,7 @@
   <div class="sec-head reveal"><span class="eyebrow">Versiones</span><h2>Tres versiones, una misma idea</h2><p>Empieza con lo simple y crece cuando lo necesites. PRO es un pago único, sin suscripción.</p></div>
   <div class="cs-tiers reveal" id="csTiers"></div>
   <div class="cs-scroll reveal"><table class="cs-tbl" id="csTable"></table></div>
-  <p class="cs-note">Minimal no lleva marca de agua. En Free es obligatoria; PRO permite personalizarla o quitarla. PRO se paga una sola vez (US$ 15), sin suscripción. *En web se pueden seleccionar MP4 hasta 1080p y 240 FPS, pero la compatibilidad y estabilidad dependen del navegador y del equipo. 4K/240 FPS está previsto para la versión de PC, no para la web. Las características son preliminares y pueden cambiar.</p>
+  <p class="cs-note">Minimal no lleva marca de agua. En Free es obligatoria; PRO permite personalizarla o quitarla. PRO se paga una sola vez (US$ 15), sin suscripción. *En web se pueden seleccionar MP4 hasta 1080p y 240 FPS, pero la compatibilidad y estabilidad dependen del navegador y del equipo. Los formatos más exigentes (4K y 8K, hasta 240 FPS) y WorkStation están en la app de escritorio, no en la web. La app la puede descargar cualquier plan, pero esas funciones solo se activan con PRO y en Free aparecen bloqueadas. El editor avisa con «Exportación exigente» solo cuando la combinación elegida lo es de verdad. Las características son preliminares y pueden cambiar.</p>
   <div style="text-align:center;margin-top:34px" class="reveal"><a class="btn btn-primary btn-lg" href="#lanzamiento" data-cta><span data-lbl data-cs="Disponible el 15 de noviembre" data-live="Empezar gratis">Disponible el 15 de noviembre</span></a></div>
 </div></section>
 
@@ -373,13 +380,17 @@
 <section class="faq" id="faq"><div class="container">
   <div class="sec-head reveal"><span class="eyebrow">Preguntas frecuentes</span><h2>Lo que suelen preguntar</h2></div>
   <div class="faq-list">
-    <div class="qa reveal" data-only="cs"><button aria-expanded="false">¿Cuándo sale Lyric Studio?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>El lanzamiento es el 15 de noviembre de 2026. Esta página se actualizará ese día con el acceso al editor.</p></div></div></div>
-    <div class="qa reveal"><button aria-expanded="false">¿Necesito instalar algo?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>No. Lyric Studio funciona en el navegador y el video se procesa en tu equipo. Para exportar en MP4 se recomienda Chrome o Edge actualizados.</p></div></div></div>
+    <div class="qa reveal" data-only="cs"><button aria-expanded="false">¿Cuándo sale Lyric Studio?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>El lanzamiento es el 15 de noviembre de 2026. Esta página se actualizará ese día con el acceso al editor y la descarga de la app de escritorio.</p></div></div></div>
+    <div class="qa reveal"><button aria-expanded="false">¿Necesito instalar algo?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>No. Lyric Studio funciona en el navegador y el video se procesa en tu equipo. Para exportar en MP4 se recomienda Chrome o Edge actualizados. También hay una app de escritorio, donde funcionan WorkStation y los formatos de exportación más exigentes con PRO.</p></div></div></div>
     <div class="qa reveal"><button aria-expanded="false">¿Qué formatos de letra acepta?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>Archivos .LRC y .SRT, o texto plano sin tiempos. Si pegas texto, el editor te lleva a sincronizarlo con el audio.</p></div></div></div>
     <div class="qa reveal"><button aria-expanded="false">¿Mis archivos se suben a algún servidor?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>Tu audio, imágenes y videos se procesan en tu navegador. El proyecto se guarda como un archivo .lyr en tu equipo y se autoguarda localmente.</p></div></div></div>
     <div class="qa reveal"><button aria-expanded="false">¿Qué diferencia hay entre Free y PRO?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>Free permite crear y exportar en WebM con la marca LyricStudio.site. PRO agrega MP4, todas las fuentes y animaciones, keyframes, capas, estilo por línea, marca de agua propia y herramientas avanzadas.</p></div></div></div>
     <div class="qa reveal"><button aria-expanded="false">¿PRO es una suscripción?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>No, es un pago único de US$ 15 con PayPal. Si algo falla, escribe a support@lyricstudio.site.</p></div></div></div>
-    <div class="qa reveal"><button aria-expanded="false">¿Puedo usar un video mío de fondo?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>Sí. Se recorta para llenar el cuadro, se repite en bucle y se silencia: se usa el audio del proyecto.</p></div></div></div>
+    <div class="qa reveal"><button aria-expanded="false">¿Puedo usar un video mío de fondo?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>Sí. Se recorta para llenar el cuadro, se repite en bucle y se silencia: se usa el audio del proyecto. Las animaciones de fondo (zoom, desplazamiento y latido) son para imágenes.</p></div></div></div>
+    <div class="qa reveal"><button aria-expanded="false">¿Puedo usar WorkStation en el navegador?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>No. WorkStation funciona en la app de escritorio, que controla tus monitores y se activa con tu cuenta PRO. Si abres la función desde la web, el editor te avisa y te lleva a la descarga. Al activarla, cada ventana se abre en pantalla completa en el monitor que le asignaste.</p></div></div></div>
+    <div class="qa reveal"><button aria-expanded="false">¿Qué pasa si mi audio, video o imagen está dañado?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>El editor no falla en silencio: te muestra una notificación roja que explica qué archivo es el problema, y tu proyecto sigue como estaba.</p></div></div></div>
+    <div class="qa reveal"><button aria-expanded="false">¿Qué resoluciones y FPS puedo exportar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>En la web, MP4 a 480p, 720p o 1080p con 30, 60, 120 o 240 FPS, según lo que admita tu equipo. En WebM el navegador decide resolución y FPS. Con PRO, la app de escritorio suma los formatos más exigentes, hasta 8K y 240 FPS.</p></div></div></div>
+    <div class="qa reveal"><button aria-expanded="false">¿La app de escritorio es solo para PRO?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="qa-body"><div><p>No. Puedes usarla con cualquier plan. La app detecta tu licencia: con PRO activa WorkStation y los formatos de exportación más exigentes; en Free esas funciones aparecen bloqueadas, igual que en la web.</p></div></div></div>
   </div>
 </div></section>
 
@@ -510,28 +521,28 @@
   const TIERS=[
     {n:'Minimal',t:'Lo esencial, sin vueltas.',b:'Gratis',lines:4,tl:0,hl:['Texto y fondo','Sin marca de agua']},
     {n:'Free',t:'Crea y sincroniza tus videos en el navegador.',b:'Gratis',lines:6,tl:1,hl:['Timeline básico','Animaciones esenciales','Marca obligatoria']},
-    {n:'Pro',t:'Herramientas avanzadas para diseñar cada línea.',b:'US$ 15 · pago único',lines:9,tl:3,hot:true,hl:['Presets visuales','Keyframes','Doble capa','Modo Estudio','WorkStation · 2 monitores','Marca personalizable','MP4']}
+    {n:'Pro',t:'Herramientas avanzadas para diseñar cada línea.',b:'US$ 15 · pago único',lines:9,tl:3,hot:true,hl:['Presets visuales','Keyframes','Doble capa','Modo Estudio','WorkStation · app de escritorio','Estilo propio por línea','Marca personalizable','MP4']}
   ];
   const ROWS=[
     {k:'Precio',v:['Gratis','Gratis','<span class="cs-price">US$ 15</span> <span class="cs-dim">pago único</span>']},
-    {k:'Dónde corre',v:['Navegador','Navegador','Navegador · versión PC en desarrollo']},
-    {k:'Tipografías',n:[4,10,30],s:['4','~10','30+']},
+    {k:'Dónde corre',v:['Navegador · app de escritorio','Navegador · app de escritorio','Navegador · app de escritorio']},
+    {k:'Tipografías',n:[4,10,45],s:['4','~10','45']},
     {k:'Subir tipografías propias',v:['—','—','Sí · TTF, OTF y WOFF']},
-    {k:'Animaciones',v:['Básicas','Más variedad','Biblioteca PRO + presets']},
+    {k:'Animaciones',v:['Básicas','Más variedad','16 de entrada, 9 de salida + presets']},
     {k:'Composición visual por palabra',v:['—','—','Presets visuales']},
     {k:'Presets de estilo reutilizables',v:['—','—','Guardar y cambiar presets']},
     {k:'Sincronizar y editar',l:[0,2,5],s:['No','Básico','Completo']},
-    {k:'Estilo independiente por línea',v:['—','—','Sí']},
+    {k:'Estilo independiente por línea',v:['—','—','Sí · color, contorno, resplandor y sombra']},
     {k:'Keyframes',v:['—','Vista previa bloqueada','Editor visual']},
     {k:'Doble capa de líneas',v:['—','—','Sí']},
     {k:'Modo Estudio · doble vista',v:['—','—','Sí']},
-    {k:'WorkStation · dos monitores',v:['—','—','Editor y timeline en uno · información y vista previa grande en el otro']},
+    {k:'WorkStation · dos monitores',v:['—','—','App de escritorio · editor y timeline en un monitor, información y vista previa grande a pantalla completa en el otro']},
     {k:'Marca de agua',v:['No','Obligatoria','Personalizable u opcional']},
     {k:'Captura de cuadro PNG',v:['—','—','Sí']},
     {k:'Controles personalizables',v:['—','—','Sí']},
     {k:'Formato de exportación web',v:['WebM','WebM · navegador','MP4 · render por cuadros']},
     {k:'Resolución y FPS web',v:['Automáticos','No configurables en WebM','MP4 seleccionable · hasta 1080p / 240 FPS*']},
-    {k:'Exportación 4K/240 FPS',v:['—','—','Versión de PC · prevista']},
+    {k:'Exportación 4K y 8K (hasta 240 FPS)',v:['—','—','App de escritorio · bloqueado en Free']},
     {k:'Proyectos',v:['—','Autoguardado local · .lyr','Autoguardado local · .lyr']},
     {k:'Imágenes y textos de stock',v:['—','—','<span class="cs-soon">Próximamente</span>']}
   ];
