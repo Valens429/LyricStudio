@@ -12,11 +12,11 @@
 <meta property="og:title" content="Lyric Studio — Generador de video-letras">
 <meta property="og:description" content="Crea videos de letras sincronizadas desde un archivo .LRC o .SRT y tu audio. Exporta en MP4 desde el navegador.">
 <meta property="og:url" content="https://lyricstudio.site/">
-<meta property="og:image" content="https://lyricstudio.site/icon.svg">
+<meta property="og:image" content="https://lyricstudio.site/icon-512.png">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B1620">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
-<link rel="apple-touch-icon" href="icon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('lyricStudio.landingTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <link rel="stylesheet" href="landing.css">
@@ -189,7 +189,7 @@
   <div class="hero-stage" id="heroStage"><div class="stage-floats">
       <div class="float f1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h14"/></svg></span><div><b>Letra sincronizada</b><small>Línea por línea o por palabra</small></div></div>
       <div class="float f2"><div class="wave" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i></div><div><b>Onda del audio</b><small>Marca el golpe exacto</small></div></div>
-      <div class="float f3" id="fMp4"><span class="toggle" aria-hidden="true"></span><div><b>Exporta en MP4</b><small id="fMp4Q"><span>8k · 240 FPS</span></small></div></div>
+      <div class="float f3" id="fMp4"><span class="toggle" aria-hidden="true"></span><div><b>Exporta en MP4</b><small id="fMp4Q"><span>1080p · 240 FPS</span></small></div></div>
   </div></div>
   <div class="h3d-hud"><b id="h3dTag">Póster · Bebas Neue</b><span id="h3dHint">Arrastra · clic para traer al frente · doble clic para girar</span></div>
 </section>
@@ -217,12 +217,12 @@
   <div class="feat-grid">
     <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Sincronización en pantalla completa</h3><p>Marca cada línea con la barra espaciadora mientras suena la canción. Baja la velocidad a 0.5× para mayor precisión.</p></article>
     <article class="card reveal" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-6 4 12 3-9 2 3h4"/></svg></div><h3>Timeline con onda</h3><p>Arrastra bloques, recorta bordes, divide y une líneas. Los bordes se imantan al cursor y a las líneas vecinas.</p></article>
-    <article class="card reveal" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V4h14v3M12 4v16M9 20h6"/></svg></div><h3>48 tipografías</h3><p>Desde fuentes de impacto hasta manuscritas. Con PRO también subes la tuya y viaja dentro del proyecto.</p></article>
+    <article class="card reveal" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V4h14v3M12 4v16M9 20h6"/></svg></div><h3>30 tipografías</h3><p>Desde fuentes de impacto hasta manuscritas. Con PRO también subes la tuya y viaja dentro del proyecto.</p></article>
     <article class="card reveal" style="--d:.24s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></div><h3>17 animaciones</h3><p>Por línea, por palabra o por letra: fundido, rebote, máquina de escribir, karaoke con resaltado progresivo y más.</p></article>
     <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg></div><h3>Fondos animados</h3><p>Color, degradado, imagen o tu propio video en bucle, con zoom, desplazamiento o latido y control de oscurecido.</p></article>
     <article class="card reveal" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></div><h3>Cuatro formatos</h3><p>9:16, 1:1, 4:5 y 16:9. Un mismo proyecto sirve para cada red sin rehacerlo.</p></article>
     <article class="card reveal" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><h3>Movimiento con keyframes</h3><p>Anima posición, escala, giro y opacidad de cada línea, con movimientos listos o a tu medida.</p></article>
-    <article class="card reveal" style="--d:.24s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5 14v5h14v-5"/></svg></div><h3>Exportación MP4</h3><p>Render cuadro por cuadro hasta 8K 240 FPS según tu equipo. En Free exportas en WebM.</p></article>
+    <article class="card reveal" style="--d:.24s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5 14v5h14v-5"/></svg></div><h3>Exportación MP4</h3><p>Render cuadro por cuadro a 480p, 720p o 1080p y hasta 240 FPS según tu equipo. En Free exportas en WebM.</p></article>
   </div>
 </div></section>
 
@@ -235,7 +235,7 @@
     <div class="step"><div class="num">2</div><h3>Sincroniza y estiliza</h3><p>Marca cada línea al ritmo de la canción y elige fuente, animación y colores.</p>
       <div class="illus"><div class="tl"><b></b><b></b><b></b></div><div class="head"></div><div class="mark">MARCAR</div></div></div>
     <div class="step"><div class="num">3</div><h3>Exporta y publica</h3><p>Descarga tu video y súbelo a TikTok, Instagram, YouTube o donde quieras.</p>
-      <div class="illus"><div class="exp"><div class="row"><span>Renderizando…</span><span>1080p · 120 FPS</span></div><div class="pbar"><i></i></div><div class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>¡Video listo!</div></div></div></div>
+      <div class="illus"><div class="exp"><div class="row"><span>Renderizando…</span><span>1080p · 60 FPS</span></div><div class="pbar"><i></i></div><div class="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>¡Video listo!</div></div></div></div>
   </div>
 </div></section>
 
@@ -353,7 +353,7 @@
 
 <!-- CIFRAS -->
 <section class="stats"><div class="container"><div class="stat-row">
-  <div class="stat reveal"><b data-n="48">0</b><span>tipografías</span></div>
+  <div class="stat reveal"><b data-n="30">0</b><span>tipografías</span></div>
   <div class="stat reveal" style="--d:.06s"><b data-n="17">0</b><span>animaciones</span></div>
   <div class="stat reveal" style="--d:.12s"><b data-n="15">0</b><span>estilos listos</span></div>
   <div class="stat reveal" style="--d:.18s"><b data-n="5">0</b><span>temas de color</span></div>
@@ -365,7 +365,7 @@
   <div class="sec-head reveal"><span class="eyebrow">Versiones</span><h2>Tres versiones, una misma idea</h2><p>Empieza con lo simple y crece cuando lo necesites. PRO es un pago único, sin suscripción.</p></div>
   <div class="cs-tiers reveal" id="csTiers"></div>
   <div class="cs-scroll reveal"><table class="cs-tbl" id="csTable"></table></div>
-  <p class="cs-note">Minimal no lleva marca de agua. En Free es obligatoria; PRO permite personalizarla o quitarla. PRO se paga una sola vez (US$ 15), sin suscripción. *En web se pueden seleccionar MP4 hasta 8K y 240 FPS, pero la compatibilidad y estabilidad dependen del navegador y del equipo. 4K/240 FPS está previsto para la versión de PC, no para la web. Las características son preliminares y pueden cambiar.</p>
+  <p class="cs-note">Minimal no lleva marca de agua. En Free es obligatoria; PRO permite personalizarla o quitarla. PRO se paga una sola vez (US$ 15), sin suscripción. *En web se pueden seleccionar MP4 hasta 1080p y 240 FPS, pero la compatibilidad y estabilidad dependen del navegador y del equipo. 4K/240 FPS está previsto para la versión de PC, no para la web. Las características son preliminares y pueden cambiar.</p>
   <div style="text-align:center;margin-top:34px" class="reveal"><a class="btn btn-primary btn-lg" href="#lanzamiento" data-cta><span data-lbl data-cs="Disponible el 15 de noviembre" data-live="Empezar gratis">Disponible el 15 de noviembre</span></a></div>
 </div></section>
 
@@ -430,7 +430,7 @@
   (function(){var f=$('#fMp4'),q=$('#fMp4Q');if(!f||!q)return;
     var hi=true;f.classList.add('hi');if(reduce)return;
     function set(txt){var sp=q.firstChild;sp.classList.add('sw');setTimeout(function(){sp.textContent=txt;sp.classList.remove('sw');},220);}
-    setInterval(function(){hi=!hi;f.classList.toggle('hi',hi);set(hi?'1080p · 120 FPS':'4K · 240 FPS');},2800);
+    setInterval(function(){hi=!hi;f.classList.toggle('hi',hi);set(hi?'1080p · 240 FPS':'720p · 60 FPS');},2800);
   })();
   /* estilos en vivo */
   var STY=[
@@ -515,7 +515,7 @@
   const ROWS=[
     {k:'Precio',v:['Gratis','Gratis','<span class="cs-price">US$ 15</span> <span class="cs-dim">pago único</span>']},
     {k:'Dónde corre',v:['Navegador','Navegador','Navegador · versión PC en desarrollo']},
-    {k:'Tipografías',n:[4,10,48],s:['4','~10','48+']},
+    {k:'Tipografías',n:[4,10,30],s:['4','~10','30+']},
     {k:'Subir tipografías propias',v:['—','—','Sí · TTF, OTF y WOFF']},
     {k:'Animaciones',v:['Básicas','Más variedad','Biblioteca PRO + presets']},
     {k:'Composición visual por palabra',v:['—','—','Presets visuales']},
@@ -530,7 +530,7 @@
     {k:'Captura de cuadro PNG',v:['—','—','Sí']},
     {k:'Controles personalizables',v:['—','—','Sí']},
     {k:'Formato de exportación web',v:['WebM','WebM · navegador','MP4 · render por cuadros']},
-    {k:'Resolución y FPS web',v:['Automáticos','No configurables en WebM','Varios Formatos · hasta 8K / 240 FPS*']},
+    {k:'Resolución y FPS web',v:['Automáticos','No configurables en WebM','MP4 seleccionable · hasta 1080p / 240 FPS*']},
     {k:'Exportación 4K/240 FPS',v:['—','—','Versión de PC · prevista']},
     {k:'Proyectos',v:['—','Autoguardado local · .lyr','Autoguardado local · .lyr']},
     {k:'Imágenes y textos de stock',v:['—','—','<span class="cs-soon">Próximamente</span>']}
@@ -587,11 +587,13 @@ function clamp(x,a,b){return Math.max(a,Math.min(b,x));}
 function wrap(x){return(((x+2.5)%5)+5)%5-2.5;}
 function smooth(a,b,x){var t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);}
 function rr(w,h,r){
-  var s=new THREE.Shape(),x=-w/2,y=-h/2;
-  s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.absarc(x+w-r,y+r,r,-Math.PI/2,0,false);
-  s.lineTo(x+w,y+h-r);s.absarc(x+w-r,y+h-r,r,0,Math.PI/2,false);
-  s.lineTo(x+r,y+h);s.absarc(x+r,y+h-r,r,Math.PI/2,Math.PI,false);
-  s.lineTo(x,y+r);s.absarc(x+r,y+r,r,Math.PI,Math.PI*1.5,false);
+  /* Puntos explícitos sin duplicados: absarc+lineTo dejaba puntos casi repetidos
+     y el bisel del ExtrudeGeometry generaba un salto en la esquina inferior. */
+  var x=-w/2,y=-h/2,N=14,pts=[],cs=[[x+w-r,y+r,-Math.PI/2],[x+w-r,y+h-r,0],[x+r,y+h-r,Math.PI/2],[x+r,y+r,Math.PI]];
+  cs.forEach(function(c){
+    for(var i=0;i<=N;i++){var a=c[2]+(i/N)*Math.PI/2;pts.push(new THREE.Vector2(c[0]+Math.cos(a)*r,c[1]+Math.sin(a)*r));}
+  });
+  var s=new THREE.Shape();s.setFromPoints(pts);
   return s;
 }
 function screenGeo(w,h,r){
